@@ -9,256 +9,189 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../style.css" />
+    <style>
+      .dp-header { background: linear-gradient(135deg, var(--secondary), var(--primary)); border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px); }
+      .dp-header .inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .dp-header .brand { font-weight: 800; font-size: 1.1rem; color: var(--text-heading); text-decoration: none; }
+      .dp-header .brand span { color: var(--accent); }
+      .dp-header nav { display: flex; gap: 8px; flex-wrap: wrap; }
+      .dp-header nav a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 6px 14px; border-radius: 6px; transition: all 0.3s ease; }
+      .dp-header nav a:hover, .dp-header nav a.active { color: var(--accent); background: rgba(100,255,218,0.08); }
+
+      .dp-hero { max-width: 1200px; margin: 0 auto; padding: 50px 24px 30px; }
+      .dp-hero h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; color: var(--text-heading); letter-spacing: -0.03em; margin-bottom: 8px; }
+      .dp-hero .sub { color: var(--text-muted); font-size: 1rem; }
+
+      .dp-container { max-width: 1200px; margin: 0 auto; padding: 0 24px 60px; }
+      .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 36px; margin-bottom: 36px; }
+      .card:hover { border-color: rgba(100,255,218,0.2); }
+      .card h2 { font-size: 1.3rem; font-weight: 700; color: var(--text-heading); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 2px solid var(--border); }
+      .card p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; margin-bottom: 16px; }
+
+      .kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
+      .kpi-box { background: rgba(100,255,218,0.04); border: 1px solid var(--border); border-radius: 12px; padding: 24px 16px; text-align: center; }
+      .kpi-box .val { font-size: 1.5rem; font-weight: 800; color: var(--accent); line-height: 1.2; margin-bottom: 4px; }
+      .kpi-box .lbl { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+      .kpi-box .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+      .dash-img { width: 100%; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 12px; }
+      .dash-cap { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px; }
+
+      .insight { background: rgba(100,255,218,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 20px 0; }
+      .insight h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+      .insight p { margin-bottom: 10px; }
+      .example { background: rgba(100,255,218,0.04); border-left: 3px solid var(--accent-alt); border-radius: 6px; padding: 12px 16px; font-size: 0.9rem; }
+
+      .seg-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 16px; margin-top: 20px; }
+      .seg-card { background: rgba(100,255,218,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+      .seg-card h4 { font-size: 1rem; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+      .seg-card p { font-size: 0.85rem; margin-bottom: 6px; }
+      .seg-badge { display: inline-block; background: rgba(100,255,218,0.1); color: var(--accent); padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+
+      .rec-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 20px; margin-top: 20px; }
+      .rec-card { background: rgba(100,255,218,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+      .rec-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+      .rec-card p { font-size: 0.85rem; margin-bottom: 8px; }
+      .pri-badge { display: inline-block; background: #dc2626; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+      .pri-badge.high { background: var(--accent); color: #0a192f; }
+
+      .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(250px,1fr)); gap: 16px; margin-top: 20px; }
+      .kpi-mini { background: rgba(100,255,218,0.03); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+      .kpi-mini h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+      .kpi-mini p { font-size: 0.85rem; margin-bottom: 4px; }
+
+      .nav-row { display: flex; justify-content: space-between; gap: 16px; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+      .nav-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; background: rgba(100,255,218,0.08); color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease; }
+      .nav-btn:hover { background: var(--accent); color: #0a192f; }
+
+      .dp-footer { max-width: 1200px; margin: 0 auto; padding: 32px 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+      .dp-footer p { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
+      .dp-footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+      @media (max-width: 768px) { .kpi-row { grid-template-columns: repeat(2,1fr); } .card { padding: 24px 20px; } .dp-header .inner { flex-direction: column; align-items: flex-start; } .dp-header nav { width: 100%; overflow-x: auto; } .nav-row { flex-direction: column; } .nav-btn { justify-content: center; } }
+      @media (max-width: 500px) { .kpi-row { grid-template-columns: 1fr; } }
+    </style>
   </head>
   <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <div class="brand">📊 Analytics Report</div>
+
+    <div class="dp-header">
+      <div class="inner">
+        <a href="../index.html" class="brand">Analytics<span>.</span>Report</a>
         <nav>
-          <a href="../index.html">← Portfolio</a>
+          <a href="../index.html">Portfolio</a>
           <a href="./index.html">Overview</a>
           <a href="./sales-dashboard.html">Sales</a>
           <a href="./regional-dashboard.html">Regional</a>
           <a href="./product-dashboard.html">Products</a>
-          <a href="./executive-summary.html" class="active">Summary</a>
+          <a href="./executive-summary.html" class="active">Executive</a>
         </nav>
-      </header>
-
-      <section class="report-panel">
-        <div class="report-header">
-          <h1>👔 Executive Summary Dashboard</h1>
-          <p class="report-date">High-Level KPIs | Profit Analysis | Strategic Insights</p>
-        </div>
-
-        <div class="report-section">
-          <h2 class="section-title">Dashboard Overview</h2>
-          <div class="summary-card">
-            <p>The Executive Summary Dashboard provides C-suite level metrics and strategic insights. Monitor overall business health, profit margins, segment performance, and key performance indicators at a glance. Designed for quick decision-making and board-level reporting.</p>
-          </div>
-
-          <div class="kpi-grid">
-            <div class="kpi-card">
-              <span class="kpi-label">Total Revenue</span>
-              <strong class="kpi-value">$118.7M</strong>
-              <span class="kpi-meta">YoY: +27.92%</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Total Profit</span>
-              <strong class="kpi-value">$16.9M</strong>
-              <span class="kpi-meta">Margin: 14.2%</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">Profit Margin</span>
-              <strong class="kpi-value">14.2%</strong>
-              <span class="kpi-meta">Operating efficiency</span>
-            </div>
-            <div class="kpi-card">
-              <span class="kpi-label">YoY Growth</span>
-              <strong class="kpi-value">+27.92%</strong>
-              <span class="kpi-meta">Exceeding targets</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- DASHBOARD IMAGE -->
-        <div class="report-section">
-          <h2 class="section-title">Dashboard Visualization</h2>
-          <div class="dashboard-img-wrapper">
-            <img src="../assets/dashboards/executive-summary.png" alt="Executive Summary Dashboard with KPIs, profit margin analysis, and strategic segment breakdown" class="dashboard-screenshot">
-            <p class="dashboard-caption">Figure 4: Executive Summary Dashboard - High-level KPIs, category breakdown, profit distribution by segment, and YoY performance trends</p>
-          </div>
-        </div>
-
-        <!-- EXECUTIVE LEVEL INSIGHTS -->
-        <div class="report-section">
-          <h2 class="section-title">📊 Executive-Level Insights</h2>
-
-          <div class="insight-card">
-            <h3>Strong Growth Trajectory</h3>
-            <p>Revenue growth of <strong>27.92% YoY</strong> significantly exceeds typical industry benchmarks (8-12%). Profit growth aligns with revenue growth, indicating strong operational execution and pricing discipline.</p>
-            <div class="example-box">
-              <strong>💡 Board Message:</strong> Company is on strong growth trajectory. Current strategy is working. Recommend maintaining current initiatives while exploring acquisition opportunities in underserved markets.
-            </div>
-          </div>
-
-          <div class="insight-card">
-            <h3>Government Segment Dominance</h3>
-            <p>Government segment represents <strong>63% of total profit</strong> (~$10.6M) with stable, recurring revenue. This customer base provides revenue predictability and reduces churn risk significantly.</p>
-            <div class="example-box">
-              <strong>💡 Board Message:</strong> Government business is strategic asset providing revenue stability. Recommend protecting and expanding Government relationships through dedicated account teams and compliance investments.
-            </div>
-          </div>
-
-          <div class="insight-card">
-            <h3>Margin Sustainability Challenge</h3>
-            <p>While gross margins remain healthy at ~31%, operating margins are at 14.2%. Heavy discounting practices (particularly in Enterprise segment) are impacting profitability. This requires immediate corrective action.</p>
-            <div class="example-box">
-              <strong>💡 Board Message:</strong> Implementing discount governance could improve margins by 2-3 percentage points, adding $2-3M to annual profit. Recommend executive mandate on discount controls.
-            </div>
-          </div>
-
-          <div class="insight-card">
-            <h3>Geographic Revenue Concentration</h3>
-            <p>Central region (OH, IL, MI, PA) represents <strong>35% of revenue</strong> with top 5 states generating 70% of total sales. Geographic concentration reduces risk but may limit upside potential in underdeveloped markets like Mexico and Texas.</p>
-            <div class="example-box">
-              <strong>💡 Board Message:</strong> Geographic diversification represents growth opportunity. Recommend allocating 15-20% of expansion budget to Mexico and Texas market development with 3-year payback targets.
-            </div>
-          </div>
-
-          <div class="insight-card">
-            <h3>Seasonal Working Capital Needs</h3>
-            <p>Q4 sales are <strong>60% higher than Q2</strong> (~$11M vs ~$6.7M monthly), creating significant working capital needs for inventory and receivables management during peak season. This seasonal pattern is predictable and manageable.</p>
-            <div class="example-box">
-              <strong>💡 Board Message:</strong> Implement credit line of $15-20M to support Q3-Q4 seasonal working capital needs. Consider supply chain financing arrangements to optimize cash flow.
-            </div>
-          </div>
-        </div>
-
-        <!-- SEGMENT ANALYSIS -->
-        <div class="report-section">
-          <h2 class="section-title">🎯 Segment Performance Summary</h2>
-
-          <div class="segment-grid">
-            <div class="segment-card">
-              <h4>Government (63%)</h4>
-              <p><strong>Revenue:</strong> ~$18M | <strong>Profit:</strong> $10.6M</p>
-              <p>Most profitable, stable, recurring. Includes federal, state, local agencies.</p>
-              <span class="segment-status">Strategic Priority</span>
-            </div>
-
-            <div class="segment-card">
-              <h4>Enterprise (23%)</h4>
-              <p><strong>Revenue:</strong> ~$25M | <strong>Profit:</strong> $3.9M</p>
-              <p>Large corporations. Lower margins due to aggressive discounting. Opportunity for price increase.</p>
-              <span class="segment-status">Needs Optimization</span>
-            </div>
-
-            <div class="segment-card">
-              <h4>Midmarket (7%)</h4>
-              <p><strong>Revenue:</strong> ~$8M | <strong>Profit:</strong> $1.2M</p>
-              <p>Mid-size companies. High growth potential. Lower penetration vs. opportunity.</p>
-              <span class="segment-status">Growth Opportunity</span>
-            </div>
-
-            <div class="segment-card">
-              <h4>Channel Partners (4%)</h4>
-              <p><strong>Revenue:</strong> ~$5M | <strong>Profit:</strong> $0.7M</p>
-              <p>Reseller/distributor channel. Lower direct margins but reduces sales cost.</p>
-              <span class="segment-status">Stable</span>
-            </div>
-
-            <div class="segment-card">
-              <h4>Small Business (3%)</h4>
-              <p><strong>Revenue:</strong> ~$3M | <strong>Profit:</strong> $0.5M</p>
-              <p>SMB segment. Low volume, high cost to serve. Lower priority.</p>
-              <span class="segment-status">Monitor</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- STRATEGIC RECOMMENDATIONS FOR EXECUTIVES -->
-        <div class="report-section">
-          <h2 class="section-title">⚡ Strategic Recommendations for Leadership</h2>
-
-          <div class="executive-recommendation-grid">
-            <div class="executive-rec-card">
-              <h3>🎯 #1: Margin Protection Initiative (Q1 2026)</h3>
-              <p><strong>Impact:</strong> +$2-3M annual profit | <strong>Timeline:</strong> 90 days</p>
-              <p>Implement discount governance policy limiting discounts to: Government 5%, Enterprise 10%, SMB 15%. Requires VP-level approval for exceptions. Expected to improve margins by 2-3 percentage points.</p>
-              <span class="priority-executive">CRITICAL</span>
-            </div>
-
-            <div class="executive-rec-card">
-              <h3>🌍 #2: Geographic Expansion Plan (Q2-Q4 2026)</h3>
-              <p><strong>Impact:</strong> $5-10M incremental revenue (Year 2) | <strong>Timeline:</strong> 6-12 months</p>
-              <p>Develop market entry strategies for Mexico ($2.9M opportunity), Texas expansion ($5M+ potential). Allocate $500K for market research, competitive analysis, and pilot programs. Expected ROI: 150% in Year 2.</p>
-              <span class="priority-executive">HIGH</span>
-            </div>
-
-            <div class="executive-rec-card">
-              <h3>👔 #3: Government Segment Strategy (Ongoing)</h3>
-              <p><strong>Impact:</strong> Maintain 63% profit dominance | <strong>Timeline:</strong> Continuous</p>
-              <p>Establish dedicated Government Solutions team with compliance expertise (FedRAMP, FISMA). Invest in government-specific products and partnerships. Develop long-term contracts to lock in revenue.</p>
-              <span class="priority-executive">HIGH</span>
-            </div>
-
-            <div class="executive-rec-card">
-              <h3>💰 #4: Working Capital Optimization (Q1 2026)</h3>
-              <p><strong>Impact:</strong> Free up $5-10M cash | <strong>Timeline:</strong> 60 days</p>
-              <p>Establish $15-20M revolving credit line for seasonal working capital. Negotiate supply chain financing with key vendors. Implement just-in-time inventory for low-velocity products to reduce carrying costs.</p>
-              <span class="priority-executive">HIGH</span>
-            </div>
-
-            <div class="executive-rec-card">
-              <h3>📊 #5: Enterprise Segment Optimization (Q2 2026)</h3>
-              <p><strong>Impact:</strong> +$1-2M profit | <strong>Timeline:</strong> 120 days</p>
-              <p>Audit Enterprise segment pricing. Reduce discounts from current 15%+ to 10% standard. Develop premium Enterprise tier at higher price point. Could improve Enterprise segment profit by 25-30%.</p>
-              <span class="priority-executive">MEDIUM</span>
-            </div>
-
-            <div class="executive-rec-card">
-              <h3>🎯 #6: Product Portfolio Rationalization (Q1-Q2 2026)</h3>
-              <p><strong>Impact:</strong> Reduce SKU complexity; improve margins | <strong>Timeline:</strong> 90 days</p>
-              <p>Discontinue underperforming products (Paper showing only 4.84% growth). Consolidate SKU count by 30%. Reallocate resources to high-growth categories (Chairs +124%, Laptops +122%). Simplifies operations and improves margins.</p>
-              <span class="priority-executive">MEDIUM</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- KEY PERFORMANCE INDICATORS TO MONITOR -->
-        <div class="report-section">
-          <h2 class="section-title">📈 Monthly KPIs to Monitor</h2>
-          <div class="kpi-monitoring-grid">
-            <div class="kpi-monitor-card">
-              <h4>Revenue Growth %</h4>
-              <p><strong>Target:</strong> 25% YoY minimum</p>
-              <p>Current: 27.92% ✅ Above target</p>
-              <p>Action: Maintain current initiatives and explore acquisition targets</p>
-            </div>
-
-            <div class="kpi-monitor-card">
-              <h4>Overall Profit Margin %</h4>
-              <p><strong>Target:</strong> 25-30% (industry standard)</p>
-              <p>Current: 14.2% ⚠️ Below target</p>
-              <p>Action: Implement margin protection initiatives (discount controls, cost reduction)</p>
-            </div>
-
-            <div class="kpi-monitor-card">
-              <h4>Government Revenue %</h4>
-              <p><strong>Target:</strong> Maintain 60%+ of profit</p>
-              <p>Current: 63% ✅ On target</p>
-              <p>Action: Continue investment in Government segment relationships and compliance</p>
-            </div>
-
-            <div class="kpi-monitor-card">
-              <h4>Average Deal Size</h4>
-              <p><strong>Target:</strong> Increase 15% YoY</p>
-              <p>Current: Need assessment | Action: Implement product bundling strategy</p>
-              <p>Impact: Could increase revenue $5-8M annually</p>
-            </div>
-
-            <div class="kpi-monitor-card">
-              <h4>Customer Acquisition Cost</h4>
-              <p><strong>Target:</strong> Improve 10% YoY</p>
-              <p>Current: Need assessment | Action: Optimize digital marketing spend</p>
-              <p>Impact: Improve sales efficiency by 10-15%</p>
-            </div>
-
-            <div class="kpi-monitor-card">
-              <h4>Average Discount %</h4>
-              <p><strong>Target:</strong> <10% average</p>
-              <p>Current: ~12% estimate ⚠️ Above target</p>
-              <p>Action: Enforce discount governance policy immediately</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- NAVIGATION -->
-        <div class="report-footer">
-          <a href="./product-dashboard.html" class="nav-button">← Back to Product Dashboard</a>
-          <a href="./index.html" class="nav-button">← Back to Overview</a>
-        </div>
-      </section>
+      </div>
     </div>
+
+    <div class="dp-hero">
+      <h1>Executive Summary Dashboard</h1>
+      <p class="sub">High-Level KPIs · Profit Analysis · Strategic Insights</p>
+    </div>
+
+    <div class="dp-container">
+
+      <div class="card">
+        <h2>Dashboard Overview</h2>
+        <p>The Executive Summary Dashboard provides C-suite level metrics and strategic insights. Monitor overall business health, profit margins, segment performance, and key performance indicators at a glance. Designed for quick decision-making and board-level reporting.</p>
+        <div class="kpi-row">
+          <div class="kpi-box"><div class="val">$118.7M</div><div class="lbl">Total Revenue</div><div class="sub">YoY: +27.92%</div></div>
+          <div class="kpi-box"><div class="val">$16.9M</div><div class="lbl">Total Profit</div><div class="sub">Margin: 14.2%</div></div>
+          <div class="kpi-box"><div class="val">14.2%</div><div class="lbl">Profit Margin</div><div class="sub">Operating efficiency</div></div>
+          <div class="kpi-box"><div class="val">+27.92%</div><div class="lbl">YoY Growth</div><div class="sub">Exceeding targets</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Dashboard Visualization</h2>
+        <img src="../assets/dashboards/executive-summary.png" alt="Executive Summary Dashboard" class="dash-img" />
+        <p class="dash-cap">Figure 4: Executive Summary Dashboard — High-level KPIs, category breakdown, profit distribution by segment, and YoY performance trends</p>
+      </div>
+
+      <div class="card">
+        <h2>Executive-Level Insights</h2>
+
+        <div class="insight">
+          <h3>Strong Growth Trajectory</h3>
+          <p>Revenue growth of <strong>27.92% YoY</strong> significantly exceeds typical industry benchmarks (8-12%). Profit growth aligns with revenue growth, indicating strong operational execution and pricing discipline.</p>
+          <div class="example"><strong>Board Message:</strong> Company is on strong growth trajectory. Current strategy is working. Recommend maintaining current initiatives while exploring acquisition opportunities.</div>
+        </div>
+
+        <div class="insight">
+          <h3>Government Segment Dominance</h3>
+          <p>Government segment represents <strong>63% of total profit</strong> (~$10.6M) with stable, recurring revenue. This customer base provides revenue predictability and reduces churn risk.</p>
+          <div class="example"><strong>Board Message:</strong> Government business is a strategic asset. Recommend protecting and expanding Government relationships through dedicated account teams.</div>
+        </div>
+
+        <div class="insight">
+          <h3>Margin Sustainability Challenge</h3>
+          <p>While gross margins remain healthy at ~31%, operating margins are at 14.2%. Heavy discounting practices are impacting profitability.</p>
+          <div class="example"><strong>Board Message:</strong> Implementing discount governance could improve margins by 2-3 percentage points, adding $2-3M to annual profit.</div>
+        </div>
+
+        <div class="insight">
+          <h3>Geographic Revenue Concentration</h3>
+          <p>Central region (OH, IL, MI, PA) represents significant revenue concentration. Geographic diversification represents growth opportunity.</p>
+          <div class="example"><strong>Board Message:</strong> Recommend allocating 15-20% of expansion budget to Mexico and Texas market development.</div>
+        </div>
+
+        <div class="insight">
+          <h3>Seasonal Working Capital Needs</h3>
+          <p>Q4 sales are <strong>60% higher than Q2</strong> (~$11M vs ~$6.7M monthly), creating significant working capital needs during peak season.</p>
+          <div class="example"><strong>Board Message:</strong> Implement credit line of $15-20M to support Q3-Q4 seasonal working capital needs.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Segment Performance Summary</h2>
+        <div class="seg-grid">
+          <div class="seg-card"><h4>Government (63%)</h4><p><strong>Revenue:</strong> ~$18M | <strong>Profit:</strong> $10.6M</p><p>Most profitable, stable, recurring.</p><span class="seg-badge">Strategic Priority</span></div>
+          <div class="seg-card"><h4>Enterprise (23%)</h4><p><strong>Revenue:</strong> ~$25M | <strong>Profit:</strong> $3.9M</p><p>Lower margins due to aggressive discounting.</p><span class="seg-badge">Needs Optimization</span></div>
+          <div class="seg-card"><h4>Midmarket (7%)</h4><p><strong>Revenue:</strong> ~$8M | <strong>Profit:</strong> $1.2M</p><p>High growth potential.</p><span class="seg-badge">Growth Opportunity</span></div>
+          <div class="seg-card"><h4>Channel Partners (4%)</h4><p><strong>Revenue:</strong> ~$5M | <strong>Profit:</strong> $0.7M</p><p>Reseller/distributor channel.</p><span class="seg-badge">Stable</span></div>
+          <div class="seg-card"><h4>Small Business (3%)</h4><p><strong>Revenue:</strong> ~$3M | <strong>Profit:</strong> $0.5M</p><p>Low volume, high cost to serve.</p><span class="seg-badge">Monitor</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Strategic Recommendations for Leadership</h2>
+        <div class="rec-grid">
+          <div class="rec-card"><h3>#1: Margin Protection Initiative</h3><p><strong>Impact:</strong> +$2-3M annual profit | <strong>Timeline:</strong> 90 days</p><p>Implement discount governance policy. Expected to improve margins by 2-3 percentage points.</p><span class="pri-badge">CRITICAL</span></div>
+          <div class="rec-card"><h3>#2: Geographic Expansion Plan</h3><p><strong>Impact:</strong> $5-10M incremental revenue | <strong>Timeline:</strong> 6-12 months</p><p>Develop market entry strategies for Mexico and Texas expansion.</p><span class="pri-badge high">HIGH</span></div>
+          <div class="rec-card"><h3>#3: Government Segment Strategy</h3><p><strong>Impact:</strong> Maintain 63% profit dominance | <strong>Timeline:</strong> Continuous</p><p>Establish dedicated Government Solutions team with compliance expertise.</p><span class="pri-badge high">HIGH</span></div>
+          <div class="rec-card"><h3>#4: Working Capital Optimization</h3><p><strong>Impact:</strong> Free up $5-10M cash | <strong>Timeline:</strong> 60 days</p><p>Establish revolving credit line for seasonal working capital needs.</p><span class="pri-badge high">HIGH</span></div>
+          <div class="rec-card"><h3>#5: Enterprise Segment Optimization</h3><p><strong>Impact:</strong> +$1-2M profit | <strong>Timeline:</strong> 120 days</p><p>Audit Enterprise pricing. Reduce discounts. Develop premium Enterprise tier.</p><span class="pri-badge high">MEDIUM</span></div>
+          <div class="rec-card"><h3>#6: Product Portfolio Rationalization</h3><p><strong>Impact:</strong> Reduce SKU complexity | <strong>Timeline:</strong> 90 days</p><p>Discontinue underperforming products. Reallocate resources to high-growth categories.</p><span class="pri-badge high">MEDIUM</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Monthly KPIs to Monitor</h2>
+        <div class="kpi-grid">
+          <div class="kpi-mini"><h4>Revenue Growth %</h4><p><strong>Target:</strong> 25% YoY</p><p>Current: 27.92%</p><p>Action: Maintain initiatives</p></div>
+          <div class="kpi-mini"><h4>Profit Margin %</h4><p><strong>Target:</strong> 25-30%</p><p>Current: 14.2%</p><p>Action: Implement discount controls</p></div>
+          <div class="kpi-mini"><h4>Government Revenue %</h4><p><strong>Target:</strong> 60%+</p><p>Current: 63%</p><p>Action: Continue investment</p></div>
+          <div class="kpi-mini"><h4>Average Deal Size</h4><p><strong>Target:</strong> +15% YoY</p><p>Current: Assessment needed</p><p>Action: Implement bundling</p></div>
+          <div class="kpi-mini"><h4>Customer Acquisition Cost</h4><p><strong>Target:</strong> -10% YoY</p><p>Current: Assessment needed</p><p>Action: Optimize digital spend</p></div>
+          <div class="kpi-mini"><h4>Average Discount %</h4><p><strong>Target:</strong> &lt;10%</p><p>Current: ~12%</p><p>Action: Enforce governance</p></div>
+        </div>
+      </div>
+
+      <div class="nav-row">
+        <a href="./product-dashboard.html" class="nav-btn">← Back to Product Dashboard</a>
+        <a href="./index.html" class="nav-btn">← Back to Overview</a>
+      </div>
+
+    </div>
+
+    <div class="dp-footer">
+      <p>© 2026 Bridgit Etyang · Financial Data Analytics Report</p>
+      <p><a href="../index.html">Return to Portfolio</a></p>
+    </div>
+
   </body>
 </html>

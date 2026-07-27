@@ -1,23 +1,3 @@
-const root = document.documentElement;
-
-function applyTheme(theme) {
-  root.setAttribute('data-theme', theme);
-  try { localStorage.setItem('portfolio-theme', theme); } catch (_) {}
-  const btn = document.querySelector('.theme-toggle');
-  if (btn) btn.textContent = theme === 'light' ? '☀️' : '🌙';
-}
-
-const saved = (() => { try { return localStorage.getItem('portfolio-theme'); } catch (_) { return null; } })();
-applyTheme(saved || 'dark');
-
-document.querySelector('.theme-toggle')?.addEventListener('click', () => {
-  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  applyTheme(next);
-});
-
-document.querySelector('#year')?.addEventListener('load', function () {
-  this.textContent = new Date().getFullYear();
-});
 document.querySelectorAll('#year').forEach(el => { el.textContent = new Date().getFullYear(); });
 
 document.querySelector('.mobile-toggle')?.addEventListener('click', () => {

@@ -3,89 +3,437 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Financial Analytics Report - Overview | Bridgit Etyang</title>
+    <title>Financial Analytics Report | Bridgit Etyang</title>
+    <meta name="description" content="Comprehensive financial data analytics report using CRISP-DM methodology — executive summary, data preparation, modeling, and strategic recommendations." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../style.css" />
+    <style>
+      .report-header {
+        background: linear-gradient(135deg, var(--secondary), var(--primary));
+        border-bottom: 1px solid var(--border);
+        padding: 16px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+      }
+      .report-header .inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .report-header .brand {
+        font-weight: 800;
+        font-size: 1.1rem;
+        color: var(--text-heading);
+      }
+      .report-header .brand span { color: var(--accent); }
+      .report-header nav { display: flex; gap: 8px; flex-wrap: wrap; }
+      .report-header nav a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 6px;
+        transition: var(--transition);
+      }
+      .report-header nav a:hover,
+      .report-header nav a.active { color: var(--accent); background: rgba(100,255,218,0.08); }
+
+      .rp-hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 80px 24px 60px;
+        text-align: center;
+      }
+      .rp-hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: var(--text-heading);
+        letter-spacing: -0.03em;
+        margin-bottom: 16px;
+      }
+      .rp-hero .sub { color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 8px; }
+      .rp-hero .meta { color: var(--text-muted); font-size: 0.95rem; }
+
+      .rp-container { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+
+      .toc-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+        margin-bottom: 60px;
+      }
+      .toc-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        text-decoration: none;
+        color: var(--text);
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .toc-item:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(100,255,218,0.06);
+      }
+      .toc-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: rgba(100,255,218,0.1);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+      }
+      .toc-label { font-weight: 600; font-size: 0.95rem; }
+
+      .report-section {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px;
+        margin-bottom: 40px;
+        transition: var(--transition);
+      }
+      .report-section:hover { border-color: rgba(100,255,218,0.2); }
+
+      .section-head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--border);
+      }
+      .section-badge {
+        background: var(--accent);
+        color: #0a192f;
+        padding: 4px 14px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+      }
+      .section-head h2 { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--text-heading); }
+
+      .section-head h3 { margin: 0; font-size: 1.15rem; font-weight: 600; color: var(--text-muted); }
+
+      .report-section p, .report-section li { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; }
+      .report-section p { margin-bottom: 16px; }
+      .report-section p:last-child { margin-bottom: 0; }
+
+      .kpi-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin: 24px 0;
+      }
+      .kpi-box {
+        background: rgba(100,255,218,0.04);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px 16px;
+        text-align: center;
+      }
+      .kpi-box .val {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1.2;
+        margin-bottom: 4px;
+      }
+      .kpi-box .lbl { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+      .kpi-box .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+      .findings-box {
+        background: rgba(100,255,218,0.04);
+        border-left: 3px solid var(--accent);
+        border-radius: 8px;
+        padding: 20px 24px;
+        margin: 24px 0;
+      }
+      .findings-box strong { color: var(--text-heading); display: block; margin-bottom: 8px; font-size: 1rem; }
+      .findings-box ul { margin: 0; padding-left: 20px; }
+      .findings-box li { margin: 6px 0; }
+
+      .nav-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .nav-link-report {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background: rgba(100,255,218,0.08);
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+      .nav-link-report:hover {
+        background: var(--accent);
+        color: #0a192f;
+      }
+
+      .data-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 16px 0; }
+      .data-table td, .data-table th {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        color: var(--text-muted);
+      }
+      .data-table th { color: var(--text-heading); font-weight: 700; background: rgba(100,255,218,0.04); }
+
+      .chk-list { display: grid; gap: 10px; margin: 20px 0; }
+      .chk-item { display: flex; gap: 12px; align-items: flex-start; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+      .chk-mark { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+
+      .insight-card {
+        background: rgba(100,255,218,0.03);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        margin: 20px 0;
+      }
+      .insight-card h3 { margin: 0 0 10px; font-size: 1.1rem; font-weight: 700; color: var(--text-heading); }
+      .insight-card p { margin: 0 0 12px; }
+      .example-box {
+        background: rgba(100,255,218,0.04);
+        border-left: 3px solid var(--accent-alt);
+        border-radius: 6px;
+        padding: 14px 16px;
+        font-size: 0.9rem;
+      }
+      .example-box strong { color: var(--accent-alt); }
+
+      .dash-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-top: 24px;
+      }
+      .dash-card {
+        background: rgba(100,255,218,0.03);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+      }
+      .dash-card h4 { font-size: 1rem; font-weight: 700; color: var(--text-heading); margin-bottom: 14px; }
+      .dash-card img {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        margin-bottom: 12px;
+        background: var(--primary);
+      }
+      .dash-card p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+      .rec-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 24px;
+      }
+      .rec-card {
+        background: rgba(100,255,218,0.03);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        transition: var(--transition);
+      }
+      .rec-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+      .rec-icon { font-size: 2rem; margin-bottom: 10px; }
+      .rec-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-heading); margin-bottom: 8px; }
+      .rec-card p { font-size: 0.85rem; margin-bottom: 12px; flex: 1; }
+      .rec-details {
+        background: rgba(100,255,218,0.04);
+        border-left: 3px solid var(--accent);
+        border-radius: 6px;
+        padding: 10px 12px;
+        margin-bottom: 12px;
+        font-size: 0.85rem;
+      }
+      .rec-details strong { display: block; margin-bottom: 6px; color: var(--text-heading); }
+      .rec-details ul { margin: 0; padding-left: 16px; }
+      .rec-details li { margin: 4px 0; font-size: 0.85rem; }
+      .rec-priority {
+        display: inline-block;
+        background: var(--accent);
+        color: #0a192f;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-top: auto;
+        align-self: flex-start;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-top: 24px;
+      }
+      .feature-box {
+        background: rgba(100,255,218,0.03);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+      }
+      .feature-box h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-heading); margin-bottom: 14px; }
+      .feature-box ul { margin: 0; padding-left: 0; list-style: none; }
+      .feature-box li {
+        padding: 6px 0 6px 16px;
+        border-left: 2px solid var(--accent);
+        margin-bottom: 8px;
+        padding-left: 14px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+
+      .rp-footer {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 24px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .rp-footer p { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
+      .rp-footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+
+      .subsection { margin-bottom: 24px; }
+      .subsection h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-heading);
+        margin-bottom: 10px;
+        border-left: 3px solid var(--accent);
+        padding-left: 12px;
+      }
+      .subsection h4 { font-size: 1rem; font-weight: 600; color: var(--text-heading); margin-bottom: 8px; }
+
+      .full-report-link {
+        text-align: center;
+        margin: 40px 0;
+        padding: 40px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+      }
+      .full-report-link h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-heading); margin-bottom: 12px; }
+      .full-report-link p { color: var(--text-muted); margin-bottom: 20px; }
+
+      @media (max-width: 768px) {
+        .kpi-row { grid-template-columns: repeat(2, 1fr); }
+        .dash-grid, .rec-grid, .feature-grid { grid-template-columns: 1fr; }
+        .report-section { padding: 24px 20px; }
+        .report-header .inner { flex-direction: column; align-items: flex-start; }
+        .report-header nav { width: 100%; overflow-x: auto; }
+        .toc-grid { grid-template-columns: 1fr; }
+        .section-head { flex-direction: column; align-items: flex-start; }
+        .nav-row { flex-direction: column; align-items: stretch; }
+        .nav-link-report { justify-content: center; }
+      }
+      @media (max-width: 500px) {
+        .kpi-row { grid-template-columns: 1fr; }
+      }
+
+      .page-nav-inline {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+      }
+      @media (max-width: 768px) { .page-nav-inline { flex-direction: column; } }
+    </style>
   </head>
   <body>
-    <div class="page-shell">
-      <header class="topbar">
-        <div class="brand">📊 Analytics Report</div>
+
+    <div class="report-header">
+      <div class="inner">
+        <a href="../index.html" class="brand" style="text-decoration:none">Analytics<span>.</span>Report</a>
         <nav>
-          <a href="../index.html">← Portfolio</a>
+          <a href="../index.html">Portfolio</a>
           <a href="./index.html" class="active">Overview</a>
           <a href="./sales-dashboard.html">Sales</a>
           <a href="./regional-dashboard.html">Regional</a>
           <a href="./product-dashboard.html">Products</a>
-          <a href="./executive-summary.html">Summary</a>
+          <a href="./executive-summary.html">Executive</a>
         </nav>
-      </header>
+      </div>
+    </div>
 
-      <!-- REPORT TITLE PAGE -->
-      <section class="report-title-page">
-        <div class="title-content">
-          <h1>Financial Data Analytics Report</h1>
-          <p class="report-subtitle">Microsoft Financial Sample Dataset Analysis</p>
-          <p class="report-author">By: Bridgit Etyang</p>
-          <p class="report-methodology">Methodology: CRISP-DM</p>
-          <p class="report-date">2026</p>
-        </div>
-      </section>
+    <div class="rp-hero">
+      <div class="sub">Financial Data Analytics Report</div>
+      <h1>Microsoft Financial Sample<br/>Dataset Analysis</h1>
+      <p class="meta">By Bridgit Etyang · CRISP-DM Methodology · 2026</p>
+    </div>
 
-      <!-- TABLE OF CONTENTS -->
-      <section id="toc" class="report-toc">
-        <h2>Contents</h2>
-        <nav class="toc-nav">
-          <a href="#overview" class="toc-link">Executive Summary</a>
-          <a href="#business" class="toc-link">Business Understanding</a>
-          <a href="#data-understanding" class="toc-link">Data Understanding</a>
-          <a href="#preparation" class="toc-link">Data Preparation</a>
-          <a href="#modeling" class="toc-link">Data Modeling & Insights</a>
-          <a href="#evaluation" class="toc-link">Evaluation</a>
-          <a href="#recommendations" class="toc-link">Strategic Recommendations</a>
-          <a href="#dashboards" class="toc-link">Interactive Dashboards</a>
-          <a href="#deployment" class="toc-link">Deployment</a>
-        </nav>
-      </section>
+    <div class="rp-container">
 
-      <!-- EXECUTIVE SUMMARY -->
-      <section id="overview" class="report-section report-page">
-        <div class="page-header">
+      <div class="toc-grid">
+        <a href="#overview" class="toc-item"><span class="toc-num">ES</span><span class="toc-label">Executive Summary</span></a>
+        <a href="#business" class="toc-item"><span class="toc-num">01</span><span class="toc-label">Business Understanding</span></a>
+        <a href="#data-understanding" class="toc-item"><span class="toc-num">02</span><span class="toc-label">Data Understanding</span></a>
+        <a href="#preparation" class="toc-item"><span class="toc-num">03</span><span class="toc-label">Data Preparation</span></a>
+        <a href="#modeling" class="toc-item"><span class="toc-num">04</span><span class="toc-label">Modeling &amp; Insights</span></a>
+        <a href="#evaluation" class="toc-item"><span class="toc-num">05</span><span class="toc-label">Evaluation</span></a>
+        <a href="#recommendations" class="toc-item"><span class="toc-num">06</span><span class="toc-label">Recommendations</span></a>
+        <a href="#dashboards" class="toc-item"><span class="toc-num">07</span><span class="toc-label">Dashboards</span></a>
+        <a href="#deployment" class="toc-item"><span class="toc-num">08</span><span class="toc-label">Deployment</span></a>
+      </div>
+
+      <section id="overview" class="report-section">
+        <div class="section-head">
           <span class="section-badge">Executive Summary</span>
-          <h2>Key Findings & Overview</h2>
+          <h2>Key Findings &amp; Overview</h2>
+        </div>
+        <p>This comprehensive analysis evaluates revenue, expenses, and profitability across different product categories, regions, and customer segments to identify opportunities for improving budgeting performance and reducing costs.</p>
+
+        <div class="kpi-row">
+          <div class="kpi-box"><div class="val">$118.7M</div><div class="lbl">Total Revenue</div><div class="sub">Across all products &amp; regions</div></div>
+          <div class="kpi-box"><div class="val">$16.9M</div><div class="lbl">Total Profit</div><div class="sub">14.2% profit margin</div></div>
+          <div class="kpi-box"><div class="val">$101.8M</div><div class="lbl">COGS</div><div class="sub">85.8% of revenue</div></div>
+          <div class="kpi-box"><div class="val">Paseo</div><div class="lbl">Top Product</div><div class="sub">~$33M revenue</div></div>
         </div>
 
-        <div class="summary-card">
-          <p>This comprehensive analysis evaluates revenue, expenses, and profitability across different product categories, regions, and customer segments to identify opportunities for improving budgeting performance and reducing costs.</p>
-        </div>
-
-        <div class="kpi-grid">
-          <div class="kpi-card">
-            <span class="kpi-label">Total Revenue</span>
-            <strong class="kpi-value">$118.7M</strong>
-            <span class="kpi-meta">Across all products & regions</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-label">Total Profit</span>
-            <strong class="kpi-value">$16.9M</strong>
-            <span class="kpi-meta">14.2% profit margin</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-label">Total COGS</span>
-            <strong class="kpi-value">$101.8M</strong>
-            <span class="kpi-meta">85.8% of revenue</span>
-          </div>
-          <div class="kpi-card">
-            <span class="kpi-label">Top Product</span>
-            <strong class="kpi-value">Paseo</strong>
-            <span class="kpi-meta">~$33M revenue</span>
-          </div>
-        </div>
-
-        <div class="highlight-box highlight-success">
+        <div class="findings-box">
           <strong>Key Findings:</strong>
           <ul>
             <li>Paseo product generates the highest revenue and profit</li>
@@ -95,273 +443,181 @@
           </ul>
         </div>
 
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#toc" class="nav-link-report">← Table of Contents</a>
           <a href="#business" class="nav-link-report">Next: Business Understanding →</a>
         </div>
       </section>
 
-      <!-- BUSINESS UNDERSTANDING -->
-      <section id="business" class="report-section report-page">
-        <div class="page-header">
-          <span class="section-badge">Section 1</span>
+      <section id="business" class="report-section">
+        <div class="section-head">
+          <span class="section-badge">Section 01</span>
           <h2>Business Understanding</h2>
         </div>
 
         <div class="subsection">
-          <h3>Context & Importance</h3>
+          <h3>Context &amp; Importance</h3>
           <p>Organizations rely on financial data analytics to monitor performance, manage costs, and support strategic budgeting decisions. In this project, financial sales data was analyzed to identify patterns and trends related to revenue generation, expenses, and profitability.</p>
         </div>
 
         <div class="subsection">
-          <h4>Problem Statement</h4>
+          <h3>Problem Statement</h3>
           <p>The company needs to determine which products and regions generate the highest revenue and profit while identifying areas where operational costs can be reduced to improve overall financial performance.</p>
         </div>
 
         <div class="subsection">
-          <h4>Key Business Questions</h4>
-          <ul class="question-list">
-            <li>Which product generates the highest revenue?</li>
-            <li>What are the total revenues, expenses, and profits across product categories and regions?</li>
-            <li>Where can cost-saving opportunities be identified?</li>
+          <h3>Key Business Questions</h3>
+          <ul style="padding-left:20px;color:var(--text-muted)">
+            <li style="margin:8px 0">Which product generates the highest revenue?</li>
+            <li style="margin:8px 0">What are the total revenues, expenses, and profits across product categories and regions?</li>
+            <li style="margin:8px 0">Where can cost-saving opportunities be identified?</li>
           </ul>
         </div>
 
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#overview" class="nav-link-report">← Executive Summary</a>
           <a href="#data-understanding" class="nav-link-report">Next: Data Understanding →</a>
         </div>
       </section>
 
-      <!-- DATA UNDERSTANDING -->
-      <section id="data-understanding" class="report-section report-page">
-        <div class="page-header">
-          <span class="section-badge">Section 2</span>
+      <section id="data-understanding" class="report-section">
+        <div class="section-head">
+          <span class="section-badge">Section 02</span>
           <h2>Data Understanding</h2>
         </div>
 
         <p>The dataset used in this analysis is the Microsoft Financial Sample dataset, which contains financial sales information across multiple countries and product categories.</p>
 
-        <div class="data-table-wrapper">
-          <h3>Key Variables in Dataset</h3>
-          <table class="data-table">
-            <tbody>
-              <tr>
-                <td><strong>Segment</strong></td>
-                <td>Customer type (Government, Enterprise, SMB, etc.)</td>
-              </tr>
-              <tr>
-                <td><strong>Country</strong></td>
-                <td>Sales region and geographic markets</td>
-              </tr>
-              <tr>
-                <td><strong>Product</strong></td>
-                <td>Product categories (Paseo, VTT, Velo, Carretera, etc.)</td>
-              </tr>
-              <tr>
-                <td><strong>Discount Band</strong></td>
-                <td>Pricing tier and discount levels</td>
-              </tr>
-              <tr>
-                <td><strong>Units Sold</strong></td>
-                <td>Quantity of units per transaction</td>
-              </tr>
-              <tr>
-                <td><strong>Manufacturing Price</strong></td>
-                <td>Cost per unit to manufacture</td>
-              </tr>
-              <tr>
-                <td><strong>Sale Price</strong></td>
-                <td>Price per unit to customer</td>
-              </tr>
-              <tr>
-                <td><strong>Gross Sales</strong></td>
-                <td>Revenue before discounts and COGS</td>
-              </tr>
-              <tr>
-                <td><strong>Discounts</strong></td>
-                <td>Discount amounts applied</td>
-              </tr>
-              <tr>
-                <td><strong>Sales</strong></td>
-                <td>Net sales after discounts</td>
-              </tr>
-              <tr>
-                <td><strong>COGS</strong></td>
-                <td>Cost of Goods Sold</td>
-              </tr>
-              <tr>
-                <td><strong>Profit</strong></td>
-                <td>Sales minus COGS</td>
-              </tr>
-              <tr>
-                <td><strong>Profit Margin</strong></td>
-                <td>Calculated as Profit ÷ Sales</td>
-              </tr>
-              <tr>
-                <td><strong>Date & Year</strong></td>
-                <td>Transaction date for temporal analysis</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-heading);margin:24px 0 16px">Key Variables in Dataset</h3>
+        <table class="data-table">
+          <tbody>
+            <tr><td><strong>Segment</strong></td><td>Customer type (Government, Enterprise, SMB, etc.)</td></tr>
+            <tr><td><strong>Country</strong></td><td>Sales region and geographic markets</td></tr>
+            <tr><td><strong>Product</strong></td><td>Product categories (Paseo, VTT, Velo, Carretera, etc.)</td></tr>
+            <tr><td><strong>Discount Band</strong></td><td>Pricing tier and discount levels</td></tr>
+            <tr><td><strong>Units Sold</strong></td><td>Quantity of units per transaction</td></tr>
+            <tr><td><strong>Manufacturing Price</strong></td><td>Cost per unit to manufacture</td></tr>
+            <tr><td><strong>Sale Price</strong></td><td>Price per unit to customer</td></tr>
+            <tr><td><strong>Gross Sales</strong></td><td>Revenue before discounts and COGS</td></tr>
+            <tr><td><strong>Discounts</strong></td><td>Discount amounts applied</td></tr>
+            <tr><td><strong>Sales</strong></td><td>Net sales after discounts</td></tr>
+            <tr><td><strong>COGS</strong></td><td>Cost of Goods Sold</td></tr>
+            <tr><td><strong>Profit</strong></td><td>Sales minus COGS</td></tr>
+            <tr><td><strong>Profit Margin</strong></td><td>Calculated as Profit ÷ Sales</td></tr>
+            <tr><td><strong>Date &amp; Year</strong></td><td>Transaction date for temporal analysis</td></tr>
+          </tbody>
+        </table>
 
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#business" class="nav-link-report">← Business Understanding</a>
           <a href="#preparation" class="nav-link-report">Next: Data Preparation →</a>
         </div>
       </section>
 
-      <!-- DATA PREPARATION -->
-      <section id="preparation" class="report-section report-page">
-        <div class="page-header">
-          <span class="section-badge">Section 3</span>
+      <section id="preparation" class="report-section">
+        <div class="section-head">
+          <span class="section-badge">Section 03</span>
           <h2>Data Preparation</h2>
         </div>
 
         <p>Several data cleaning steps were performed to ensure accuracy, consistency, and readiness for analysis:</p>
 
-        <div class="checklist">
-          <div class="checklist-item">
-            <span class="checkmark">✓</span>
-            <span><strong>Duplicate Check:</strong> Verified for duplicate records — none found</span>
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✓</span>
-            <span><strong>Text Standardization:</strong> Standardized all text values using PROPER() function for consistency across categorical columns</span>
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✓</span>
-            <span><strong>Outlier Removal:</strong> Identified and removed row 11 which contained multiple missing dependent values</span>
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✓</span>
-            <span><strong>Missing Values (Categorical):</strong> Replaced missing categorical values with the mode (most frequent value) in their respective columns</span>
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✓</span>
-            <span><strong>Outlier Analysis:</strong> Used descriptive statistics to identify outliers and handled appropriately</span>
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✓</span>
-            <span><strong>Missing Values (Numerical):</strong> Replaced missing numerical values with the median where appropriate</span>
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✓</span>
-            <span><strong>Calculated Fields:</strong> Derived missing Sales values using formula: Sales = Gross Sales − Discounts</span>
-          </div>
-          <div class="checklist-item">
-            <span class="checkmark">✓</span>
-            <span><strong>New Metrics:</strong> Created Profit Margin column using formula: Profit Margin = Profit ÷ Sales</span>
-          </div>
+        <div class="chk-list">
+          <div class="chk-item"><span class="chk-mark">✓</span><span><strong>Duplicate Check:</strong> Verified for duplicate records — none found</span></div>
+          <div class="chk-item"><span class="chk-mark">✓</span><span><strong>Text Standardization:</strong> Standardized all text values using PROPER() function for consistency across categorical columns</span></div>
+          <div class="chk-item"><span class="chk-mark">✓</span><span><strong>Outlier Removal:</strong> Identified and removed row 11 which contained multiple missing dependent values</span></div>
+          <div class="chk-item"><span class="chk-mark">✓</span><span><strong>Missing Values (Categorical):</strong> Replaced missing categorical values with the mode in their respective columns</span></div>
+          <div class="chk-item"><span class="chk-mark">✓</span><span><strong>Outlier Analysis:</strong> Used descriptive statistics to identify outliers and handled appropriately</span></div>
+          <div class="chk-item"><span class="chk-mark">✓</span><span><strong>Missing Values (Numerical):</strong> Replaced missing numerical values with the median where appropriate</span></div>
+          <div class="chk-item"><span class="chk-mark">✓</span><span><strong>Calculated Fields:</strong> Derived missing Sales values using formula: Sales = Gross Sales − Discounts</span></div>
+          <div class="chk-item"><span class="chk-mark">✓</span><span><strong>New Metrics:</strong> Created Profit Margin column using formula: Profit Margin = Profit ÷ Sales</span></div>
         </div>
 
-        <div class="highlight-box highlight-success">
+        <div class="findings-box">
           <strong>Data Quality Result:</strong>
-          <p>Dataset is now clean, consistent, and ready for modeling with no missing critical values and all calculations validated.</p>
+          <p style="margin:0">Dataset is now clean, consistent, and ready for modeling with no missing critical values and all calculations validated.</p>
         </div>
 
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#data-understanding" class="nav-link-report">← Data Understanding</a>
           <a href="#modeling" class="nav-link-report">Next: Data Modeling →</a>
         </div>
       </section>
 
-      <!-- DATA MODELING -->
-      <section id="modeling" class="report-section report-page">
-        <div class="page-header">
-          <span class="section-badge">Section 4</span>
-          <h2>Data Modeling & Key Insights</h2>
+      <section id="modeling" class="report-section">
+        <div class="section-head">
+          <span class="section-badge">Section 04</span>
+          <h2>Data Modeling &amp; Key Insights</h2>
         </div>
 
         <p>Pivot tables and pivot charts were created to summarize financial performance across products, regions, segments, discount levels, and time trends.</p>
 
         <div class="insight-card">
-          <h3>📊 Product Performance Analysis</h3>
+          <h3>Product Performance Analysis</h3>
           <p>Paseo is the clear revenue leader at approximately <strong>$33M</strong>, followed by VTT (~$24M) and Velo (~$22M). Carretera and Amarita generate significantly lower revenue, presenting either repositioning opportunities or product discontinuation options.</p>
-          <div class="example-box">
-            <strong>📌 Example Implementation:</strong> Focus 60% of marketing budget on Paseo while running a 90-day pilot program for Carretera repositioning in emerging markets. Reallocate underperforming sales resources.
-          </div>
+          <div class="example-box"><strong>Example Implementation:</strong> Focus 60% of marketing budget on Paseo while running a 90-day pilot program for Carretera repositioning in emerging markets.</div>
         </div>
 
         <div class="insight-card">
-          <h3>🌍 Regional Performance Analysis</h3>
-          <p>The United States dominates with ~$25M in sales, followed by Canada (~$24.3M), France (~$23.4M), and Germany (~$23.4M). Mexico generates only ~$2.9M, representing significant untapped potential or barriers to growth.</p>
-          <div class="example-box">
-            <strong>📌 Example Implementation:</strong> Launch a dedicated Mexico expansion initiative with localized pricing, partnerships with local distributors, and Spanish-language support. Benchmark against similar markets.
-          </div>
+          <h3>Regional Performance Analysis</h3>
+          <p>The United States dominates with ~$25M in sales, followed by Canada (~$24.3M), France (~$23.4M), and Germany (~$23.4M). Mexico generates only ~$2.9M, representing significant untapped potential.</p>
+          <div class="example-box"><strong>Example Implementation:</strong> Launch a dedicated Mexico expansion initiative with localized pricing and partnerships with local distributors.</div>
         </div>
 
         <div class="insight-card">
-          <h3>👥 Customer Segment Analysis</h3>
-          <p>Government segment dominates with 63% of profits (~$10.6M), while Enterprise contributes 23%, Midmarket 7%, Channel Partners 4%, and Small Business 3%. This shows strong public sector affinity.</p>
-          <div class="example-box">
-            <strong>📌 Example Implementation:</strong> Create a dedicated Government Solutions team with compliance expertise (FISMA, FedRAMP). Develop tiered pricing for Enterprise to improve their 20% profit margin to align with Government segment performance.
-          </div>
+          <h3>Customer Segment Analysis</h3>
+          <p>Government segment dominates with 63% of profits (~$10.6M), while Enterprise contributes 23%, Midmarket 7%, Channel Partners 4%, and Small Business 3%.</p>
+          <div class="example-box"><strong>Example Implementation:</strong> Create a dedicated Government Solutions team with compliance expertise (FISMA, FedRAMP).</div>
         </div>
 
         <div class="insight-card">
-          <h3>💰 Discount Impact Analysis</h3>
+          <h3>Discount Impact Analysis</h3>
           <p><strong>High-Impact Finding:</strong> Products with no discounts maintain 28.99% profit margins, while high discounts reduce margins to below 26%. Every 10% discount increase reduces profitability by 2-3 percentage points.</p>
-          <div class="example-box">
-            <strong>📌 Example Implementation:</strong> Implement a discount governance policy: Max 5% for Government, 10% for Enterprise, 15% for SMB. Use volume-based tiering instead of percentage discounts. Track all discounts in a centralized approval system.
-          </div>
+          <div class="example-box"><strong>Example Implementation:</strong> Implement a discount governance policy: Max 5% for Government, 10% for Enterprise, 15% for SMB.</div>
         </div>
 
         <div class="insight-card">
-          <h3>📅 Seasonal Trends & Monthly Patterns</h3>
-          <p>Sales exhibit strong seasonality with peaks in Q4 (Oct ~$11.2M, Dec ~$11M, Nov ~$10.1M, Sep ~$9.8M) and valleys in Q2 (Mar ~$6.8M, May ~$6.7M, Aug ~$7.1M). This pattern is consistent across 2013-2014.</p>
-          <div class="example-box">
-            <strong>📌 Example Implementation:</strong> Allocate 40% of annual marketing budget to Q4, hire seasonal sales staff in August, launch flash promotions in March/May/August, plan inventory 3 months in advance based on historical patterns.
+          <h3>Seasonal Trends &amp; Monthly Patterns</h3>
+          <p>Sales exhibit strong seasonality with peaks in Q4 (Oct ~$11.2M, Dec ~$11M, Nov ~$10.1M, Sep ~$9.8M) and valleys in Q2 (Mar ~$6.8M, May ~$6.7M, Aug ~$7.1M).</p>
+          <div class="example-box"><strong>Example Implementation:</strong> Allocate 40% of annual marketing budget to Q4, hire seasonal sales staff in August, launch flash promotions in March/May/August.</div>
+        </div>
+
+        <div class="dash-grid">
+          <div class="dash-card">
+            <h4>Sales Overview Dashboard</h4>
+            <img src="../assets/dashboards/sales-overview.png" alt="Sales Overview Dashboard" />
+            <p>Displays total sales by category, profit trends, and sub-category metrics with drill-down capabilities.</p>
+          </div>
+          <div class="dash-card">
+            <h4>Regional Performance Dashboard</h4>
+            <img src="../assets/dashboards/regional-performance.png" alt="Regional Performance Dashboard" />
+            <p>Shows state-level filtering, sales by region breakdown, and state-by-state profitability.</p>
+          </div>
+          <div class="dash-card">
+            <h4>Product Analysis Dashboard</h4>
+            <img src="../assets/dashboards/product-analysis.png" alt="Product Analysis Dashboard" />
+            <p>Provides subcategory filters, YoY sales comparison, and quantity distribution by category.</p>
+          </div>
+          <div class="dash-card">
+            <h4>Executive Summary Dashboard</h4>
+            <img src="../assets/dashboards/executive-summary.png" alt="Executive Summary Dashboard" />
+            <p>High-level KPIs, profit margin, and YoY sales with regional and category breakdowns for C-suite review.</p>
           </div>
         </div>
 
-        <!-- SAMPLE DASHBOARDS -->
-        <div class="dashboard-section">
-          <h3>Sample Dashboard Visualizations</h3>
-          <p>The following dashboards illustrate key findings:</p>
-
-          <div class="dashboard-showcase">
-            <div class="dashboard-img-wrapper">
-              <h4>Sales Overview Dashboard</h4>
-              <img src="../assets/dashboards/sales-overview.png" alt="Sales Overview Dashboard showing total sales by category and profit trends" class="dashboard-screenshot">
-              <p>Displays total sales by category, profit by category, year-over-year trends, and sub-category metrics with easy filtering and drill-down capabilities.</p>
-            </div>
-
-            <div class="dashboard-img-wrapper">
-              <h4>Regional Performance Dashboard</h4>
-              <img src="../assets/dashboards/regional-performance.png" alt="Regional Performance Dashboard with state-level analysis and regional breakdowns" class="dashboard-screenshot">
-              <p>Shows state-level filtering, sales by region breakdown, quantity analysis, and state-by-state profitability metrics for geographic comparison.</p>
-            </div>
-
-            <div class="dashboard-img-wrapper">
-              <h4>Product Analysis Dashboard</h4>
-              <img src="../assets/dashboards/product-analysis.png" alt="Product Analysis Dashboard showing product categories and sub-category performance" class="dashboard-screenshot">
-              <p>Provides subcategory filters, category selection, year-over-year sales comparison, and quantity distribution by category and subcategory.</p>
-            </div>
-
-            <div class="dashboard-img-wrapper">
-              <h4>Executive Summary Dashboard</h4>
-              <img src="../assets/dashboards/executive-summary.png" alt="Executive Summary Dashboard with KPIs and comprehensive metrics" class="dashboard-screenshot">
-              <p>High-level KPIs including total sales, total profit, profit margin percentage, and YOY sales with detailed regional and category breakdowns for C-suite review.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#preparation" class="nav-link-report">← Data Preparation</a>
           <a href="#evaluation" class="nav-link-report">Next: Evaluation →</a>
         </div>
       </section>
 
-      <!-- EVALUATION -->
-      <section id="evaluation" class="report-section report-page">
-        <div class="page-header">
-          <span class="section-badge">Section 5</span>
-          <h2>Evaluation & Analysis Results</h2>
+      <section id="evaluation" class="report-section">
+        <div class="section-head">
+          <span class="section-badge">Section 05</span>
+          <h2>Evaluation &amp; Analysis Results</h2>
         </div>
 
-        <div class="highlight-box highlight-info">
+        <div class="findings-box">
           <strong>Core Findings Summary:</strong>
           <ul>
             <li><strong>Product Strategy:</strong> Paseo is the most profitable product and should be prioritized in future sales strategies</li>
@@ -379,139 +635,90 @@
 
         <div class="subsection">
           <h3>Next Steps</h3>
-          <ul class="question-list">
-            <li>Implement recommendations across product portfolio and regional strategies</li>
-            <li>Monitor KPIs monthly to track progress against targets</li>
-            <li>Conduct deeper analysis on Enterprise segment pricing optimization</li>
-            <li>Develop Mexico market entry strategy</li>
-            <li>Establish discount governance controls</li>
+          <ul style="padding-left:20px;color:var(--text-muted)">
+            <li style="margin:6px 0">Implement recommendations across product portfolio and regional strategies</li>
+            <li style="margin:6px 0">Monitor KPIs monthly to track progress against targets</li>
+            <li style="margin:6px 0">Conduct deeper analysis on Enterprise segment pricing optimization</li>
+            <li style="margin:6px 0">Develop Mexico market entry strategy</li>
+            <li style="margin:6px 0">Establish discount governance controls</li>
           </ul>
         </div>
 
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#modeling" class="nav-link-report">← Data Modeling</a>
           <a href="#recommendations" class="nav-link-report">Next: Recommendations →</a>
         </div>
       </section>
 
-      <!-- RECOMMENDATIONS -->
-      <section id="recommendations" class="report-section report-page">
-        <div class="page-header">
-          <span class="section-badge">Section 6</span>
+      <section id="recommendations" class="report-section">
+        <div class="section-head">
+          <span class="section-badge">Section 06</span>
           <h2>Strategic Recommendations</h2>
         </div>
 
         <p>Based on comprehensive data analysis, the following recommendations are prioritized by impact and implementation feasibility:</p>
 
-        <div class="recommendation-grid">
-          <div class="recommendation-card">
-            <div class="rec-icon">📊</div>
+        <div class="rec-grid">
+          <div class="rec-card">
+            
             <h3>Product Strategy Focus</h3>
-            <p>Concentrate marketing and distribution resources on high-performing products: Paseo (primary), VTT (secondary), and Velo (tertiary).</p>
-            <div class="rec-details">
-              <strong>Action Items:</strong>
-              <ul>
-                <li>Allocate 60% of product marketing budget to Paseo</li>
-                <li>Develop Paseo premium tier to increase average deal size</li>
-                <li>Consolidate or reposition underperforming products</li>
-              </ul>
-            </div>
+            <p>Concentrate marketing and distribution resources on high-performing products: Paseo, VTT, and Velo.</p>
+            <div class="rec-details"><strong>Actions:</strong><ul><li>Allocate 60% of product marketing budget to Paseo</li><li>Develop Paseo premium tier</li><li>Reposition underperforming products</li></ul></div>
             <span class="rec-priority">High Priority</span>
           </div>
-
-          <div class="recommendation-card">
-            <div class="rec-icon">💰</div>
+          <div class="rec-card">
+            
             <h3>Discount Governance</h3>
             <p>Implement controlled discount strategies with segment-specific limits to protect profit margins.</p>
-            <div class="rec-details">
-              <strong>Action Items:</strong>
-              <ul>
-                <li>Set maximum discount limits: Gov 5%, Enterprise 10%, SMB 15%</li>
-                <li>Switch from percentage to volume-based discounts</li>
-                <li>Require VP approval for discounts exceeding limits</li>
-              </ul>
-            </div>
+            <div class="rec-details"><strong>Actions:</strong><ul><li>Set limits: Gov 5%, Enterprise 10%, SMB 15%</li><li>Switch to volume-based discounts</li><li>VP approval for exceptions</li></ul></div>
             <span class="rec-priority">High Priority</span>
           </div>
-
-          <div class="recommendation-card">
-            <div class="rec-icon">📅</div>
+          <div class="rec-card">
+            
             <h3>Seasonal Budget Allocation</h3>
-            <p>Allocate resources based on seasonal demand patterns with front-loading in Q4 and promotional initiatives in Q2.</p>
-            <div class="rec-details">
-              <strong>Action Items:</strong>
-              <ul>
-                <li>Allocate 40% of annual budget to Q4</li>
-                <li>Launch promotions in March, May, August</li>
-                <li>Plan inventory 3 months in advance</li>
-              </ul>
-            </div>
+            <p>Allocate resources based on seasonal demand patterns with front-loading in Q4 and promotions in Q2.</p>
+            <div class="rec-details"><strong>Actions:</strong><ul><li>Allocate 40% of annual budget to Q4</li><li>Launch promotions in March, May, August</li><li>Plan inventory 3 months in advance</li></ul></div>
             <span class="rec-priority">High Priority</span>
           </div>
-
-          <div class="recommendation-card">
-            <div class="rec-icon">🌍</div>
+          <div class="rec-card">
+            
             <h3>Market Expansion</h3>
-            <p>Expand high-performing markets (US, Canada, France) and investigate growth barriers in Mexico.</p>
-            <div class="rec-details">
-              <strong>Action Items:</strong>
-              <ul>
-                <li>Increase US market share by 5% through premium positioning</li>
-                <li>Launch Mexico market entry initiative</li>
-                <li>Develop localized marketing for each region</li>
-              </ul>
-            </div>
+            <p>Expand high-performing markets and investigate growth barriers in Mexico.</p>
+            <div class="rec-details"><strong>Actions:</strong><ul><li>Increase US market share by 5%</li><li>Launch Mexico market entry</li><li>Localized marketing per region</li></ul></div>
             <span class="rec-priority">Medium Priority</span>
           </div>
-
-          <div class="recommendation-card">
-            <div class="rec-icon">⚙️</div>
+          <div class="rec-card">
+            
             <h3>Cost Optimization</h3>
-            <p>Reduce operational costs through manufacturing efficiency improvements and supply chain optimization.</p>
-            <div class="rec-details">
-              <strong>Action Items:</strong>
-              <ul>
-                <li>Target 5% COGS reduction through supply chain optimization</li>
-                <li>Implement lean manufacturing principles</li>
-                <li>Consolidate supplier base for better terms</li>
-              </ul>
-            </div>
+            <p>Reduce operational costs through manufacturing efficiency and supply chain optimization.</p>
+            <div class="rec-details"><strong>Actions:</strong><ul><li>Target 5% COGS reduction</li><li>Lean manufacturing principles</li><li>Consolidate supplier base</li></ul></div>
             <span class="rec-priority">Medium Priority</span>
           </div>
-
-          <div class="recommendation-card">
-            <div class="rec-icon">🎯</div>
+          <div class="rec-card">
+            
             <h3>Segment-Specific Strategies</h3>
-            <p>Maintain Government dominance while improving Enterprise profitability through targeted approaches.</p>
-            <div class="rec-details">
-              <strong>Action Items:</strong>
-              <ul>
-                <li>Create dedicated Government Solutions team</li>
-                <li>Develop compliance expertise (FISMA, FedRAMP)</li>
-                <li>Improve Enterprise margins through pricing optimization</li>
-              </ul>
-            </div>
+            <p>Maintain Government dominance while improving Enterprise profitability.</p>
+            <div class="rec-details"><strong>Actions:</strong><ul><li>Dedicated Government Solutions team</li><li>Compliance expertise (FISMA, FedRAMP)</li><li>Enterprise pricing optimization</li></ul></div>
             <span class="rec-priority">Medium Priority</span>
           </div>
         </div>
 
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#evaluation" class="nav-link-report">← Evaluation</a>
           <a href="#dashboards" class="nav-link-report">Next: Dashboards →</a>
         </div>
       </section>
 
-      <!-- DASHBOARDS -->
-      <section id="dashboards" class="report-section report-page">
-        <div class="page-header">
-          <span class="section-badge">Section 7</span>
-          <h2>Interactive Dashboards & Tools</h2>
+      <section id="dashboards" class="report-section">
+        <div class="section-head">
+          <span class="section-badge">Section 07</span>
+          <h2>Interactive Dashboards &amp; Tools</h2>
         </div>
 
         <p>Comprehensive interactive dashboards have been developed to enable stakeholders to independently explore financial performance and drive data-informed decision-making.</p>
 
-        <div class="dashboard-features">
-          <div class="feature-list">
+        <div class="feature-grid">
+          <div class="feature-box">
             <h3>Dashboard Capabilities</h3>
             <ul>
               <li><strong>Drill-Down Analysis:</strong> Click on any metric to explore underlying details</li>
@@ -522,11 +729,10 @@
               <li><strong>Mobile Responsive:</strong> Full functionality on desktop, tablet, and mobile devices</li>
             </ul>
           </div>
-
-          <div class="feature-list">
-            <h3>Access & Distribution</h3>
+          <div class="feature-box">
+            <h3>Access &amp; Distribution</h3>
             <ul>
-              <li><strong>Power BI Online:</strong> Cloud-based dashboards with automatic refresh (recommend)</li>
+              <li><strong>Power BI Online:</strong> Cloud-based dashboards with automatic refresh</li>
               <li><strong>Excel Workbooks:</strong> Downloadable files with pivot tables and charts</li>
               <li><strong>Scheduled Reports:</strong> Automated email delivery of key metrics</li>
               <li><strong>Role-Based Access:</strong> Restrict sensitive data by user role</li>
@@ -535,32 +741,31 @@
           </div>
         </div>
 
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#recommendations" class="nav-link-report">← Recommendations</a>
           <a href="#deployment" class="nav-link-report">Next: Deployment →</a>
         </div>
       </section>
 
-      <!-- DEPLOYMENT -->
-      <section id="deployment" class="report-section report-page">
-        <div class="page-header">
-          <span class="section-badge">Section 8</span>
-          <h2>Deployment & Implementation</h2>
+      <section id="deployment" class="report-section">
+        <div class="section-head">
+          <span class="section-badge">Section 08</span>
+          <h2>Deployment &amp; Implementation</h2>
         </div>
 
-        <div class="highlight-box highlight-success">
+        <div class="findings-box">
           <strong>Ready for Distribution:</strong>
-          <p>This analysis is production-ready and packaged for immediate organizational deployment. All deliverables are optimized for stakeholder consumption and decision-making.</p>
+          <p style="margin:0">This analysis is production-ready and packaged for immediate organizational deployment. All deliverables are optimized for stakeholder consumption and decision-making.</p>
         </div>
 
         <div class="subsection">
           <h3>Deployment Components</h3>
-          <ul class="question-list">
-            <li><strong>Interactive Power BI Dashboards:</strong> Four comprehensive dashboards for different user personas</li>
-            <li><strong>Excel Report Templates:</strong> Downloadable workbooks with all pivot tables and charts</li>
-            <li><strong>Executive Summary Document:</strong> One-page overview for C-suite distribution</li>
-            <li><strong>Data Dictionary:</strong> Complete documentation of all fields and calculations</li>
-            <li><strong>Training Materials:</strong> User guides and video tutorials</li>
+          <ul style="padding-left:20px;color:var(--text-muted)">
+            <li style="margin:6px 0"><strong>Interactive Power BI Dashboards:</strong> Four comprehensive dashboards for different user personas</li>
+            <li style="margin:6px 0"><strong>Excel Report Templates:</strong> Downloadable workbooks with all pivot tables and charts</li>
+            <li style="margin:6px 0"><strong>Executive Summary Document:</strong> One-page overview for C-suite distribution</li>
+            <li style="margin:6px 0"><strong>Data Dictionary:</strong> Complete documentation of all fields and calculations</li>
+            <li style="margin:6px 0"><strong>Training Materials:</strong> User guides and video tutorials</li>
           </ul>
         </div>
 
@@ -568,52 +773,41 @@
           <h3>Implementation Timeline</h3>
           <table class="data-table">
             <tbody>
-              <tr>
-                <td><strong>Week 1-2</strong></td>
-                <td>Launch Power BI dashboards to pilot group (Finance, Sales Leadership)</td>
-              </tr>
-              <tr>
-                <td><strong>Week 3</strong></td>
-                <td>Conduct user training sessions and gather feedback</td>
-              </tr>
-              <tr>
-                <td><strong>Week 4</strong></td>
-                <td>Deploy to full organization with role-based access</td>
-              </tr>
-              <tr>
-                <td><strong>Week 5+</strong></td>
-                <td>Weekly monitoring and optimization of adoption</td>
-              </tr>
+              <tr><td><strong>Week 1-2</strong></td><td>Launch Power BI dashboards to pilot group (Finance, Sales Leadership)</td></tr>
+              <tr><td><strong>Week 3</strong></td><td>Conduct user training sessions and gather feedback</td></tr>
+              <tr><td><strong>Week 4</strong></td><td>Deploy to full organization with role-based access</td></tr>
+              <tr><td><strong>Week 5+</strong></td><td>Weekly monitoring and optimization of adoption</td></tr>
             </tbody>
           </table>
         </div>
 
         <div class="subsection">
           <h3>Success Metrics</h3>
-          <ul class="question-list">
-            <li>Dashboard adoption rate: Target 80% of team members viewing within first month</li>
-            <li>Report generation: Reduce manual reporting by 70%</li>
-            <li>Decision velocity: Enable faster approvals through accessible data</li>
-            <li>Data accuracy: Maintain 99%+ accuracy in all metrics vs. source systems</li>
+          <ul style="padding-left:20px;color:var(--text-muted)">
+            <li style="margin:6px 0">Dashboard adoption rate: Target 80% of team members viewing within first month</li>
+            <li style="margin:6px 0">Report generation: Reduce manual reporting by 70%</li>
+            <li style="margin:6px 0">Decision velocity: Enable faster approvals through accessible data</li>
+            <li style="margin:6px 0">Data accuracy: Maintain 99%+ accuracy in all metrics vs. source systems</li>
           </ul>
         </div>
 
-        <div class="highlight-box highlight-success">
-          <strong>Support & Maintenance:</strong>
-          <p>Technical support available for dashboard issues. Automatic data refresh daily. Quarterly review meetings to discuss insights and optimization opportunities.</p>
+        <div class="findings-box">
+          <strong>Support &amp; Maintenance:</strong>
+          <p style="margin:0">Technical support available for dashboard issues. Automatic data refresh daily. Quarterly review meetings to discuss insights and optimization opportunities.</p>
         </div>
 
-        <div class="page-nav">
+        <div class="nav-row">
           <a href="#dashboards" class="nav-link-report">← Dashboards</a>
-          <a href="#toc" class="nav-link-report">← Back to Contents</a>
+          <a href="#toc" class="nav-link-report">↑ Back to Contents</a>
         </div>
       </section>
 
-      <!-- FOOTER -->
-      <footer class="report-footer footer-center">
-        <p>© 2026 Bridgit Etyang. Financial Data Analytics Report.</p>
-        <p><a href="../index.html">Return to Portfolio</a></p>
-      </footer>
     </div>
+
+    <div class="rp-footer">
+      <p>© 2026 Bridgit Etyang · Financial Data Analytics Report</p>
+      <p><a href="../index.html">Return to Portfolio</a></p>
+    </div>
+
   </body>
 </html>
