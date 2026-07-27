@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Analytics Report - Overview | Bridgit Etyang</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">📊 Analytics Report</div>
+        <nav>
+          <a href="../index.html">← Portfolio</a>
+          <a href="./index.html" class="active">Overview</a>
+          <a href="./sales-dashboard.html">Sales</a>
+          <a href="./regional-dashboard.html">Regional</a>
+          <a href="./product-dashboard.html">Products</a>
+          <a href="./executive-summary.html">Summary</a>
+        </nav>
+      </header>
+
+      <!-- REPORT TITLE PAGE -->
+      <section class="report-title-page">
+        <div class="title-content">
+          <h1>Financial Data Analytics Report</h1>
+          <p class="report-subtitle">Microsoft Financial Sample Dataset Analysis</p>
+          <p class="report-author">By: Bridgit Etyang</p>
+          <p class="report-methodology">Methodology: CRISP-DM</p>
+          <p class="report-date">2026</p>
+        </div>
+      </section>
+
+      <!-- TABLE OF CONTENTS -->
+      <section id="toc" class="report-toc">
+        <h2>Contents</h2>
+        <nav class="toc-nav">
+          <a href="#overview" class="toc-link">Executive Summary</a>
+          <a href="#business" class="toc-link">Business Understanding</a>
+          <a href="#data-understanding" class="toc-link">Data Understanding</a>
+          <a href="#preparation" class="toc-link">Data Preparation</a>
+          <a href="#modeling" class="toc-link">Data Modeling & Insights</a>
+          <a href="#evaluation" class="toc-link">Evaluation</a>
+          <a href="#recommendations" class="toc-link">Strategic Recommendations</a>
+          <a href="#dashboards" class="toc-link">Interactive Dashboards</a>
+          <a href="#deployment" class="toc-link">Deployment</a>
+        </nav>
+      </section>
+
+      <!-- EXECUTIVE SUMMARY -->
+      <section id="overview" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Executive Summary</span>
+          <h2>Key Findings & Overview</h2>
+        </div>
+
+        <div class="summary-card">
+          <p>This comprehensive analysis evaluates revenue, expenses, and profitability across different product categories, regions, and customer segments to identify opportunities for improving budgeting performance and reducing costs.</p>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Total Revenue</span>
+            <strong class="kpi-value">$118.7M</strong>
+            <span class="kpi-meta">Across all products & regions</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Total Profit</span>
+            <strong class="kpi-value">$16.9M</strong>
+            <span class="kpi-meta">14.2% profit margin</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Total COGS</span>
+            <strong class="kpi-value">$101.8M</strong>
+            <span class="kpi-meta">85.8% of revenue</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Top Product</span>
+            <strong class="kpi-value">Paseo</strong>
+            <span class="kpi-meta">~$33M revenue</span>
+          </div>
+        </div>
+
+        <div class="highlight-box highlight-success">
+          <strong>Key Findings:</strong>
+          <ul>
+            <li>Paseo product generates the highest revenue and profit</li>
+            <li>United States is the strongest performing market</li>
+            <li>Government segment contributes the highest revenue among customer segments</li>
+            <li>Sales and profits peak toward the end of the year (October, December, November, September)</li>
+          </ul>
+        </div>
+
+        <div class="page-nav">
+          <a href="#toc" class="nav-link">← Table of Contents</a>
+          <a href="#business" class="nav-link">Next: Business Understanding →</a>
+        </div>
+      </section>
+
+      <!-- BUSINESS UNDERSTANDING -->
+      <section id="business" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Section 1</span>
+          <h2>Business Understanding</h2>
+        </div>
+
+        <div class="subsection">
+          <h3>Context & Importance</h3>
+          <p>Organizations rely on financial data analytics to monitor performance, manage costs, and support strategic budgeting decisions. In this project, financial sales data was analyzed to identify patterns and trends related to revenue generation, expenses, and profitability.</p>
+        </div>
+
+        <div class="subsection">
+          <h4>Problem Statement</h4>
+          <p>The company needs to determine which products and regions generate the highest revenue and profit while identifying areas where operational costs can be reduced to improve overall financial performance.</p>
+        </div>
+
+        <div class="subsection">
+          <h4>Key Business Questions</h4>
+          <ul class="question-list">
+            <li>Which product generates the highest revenue?</li>
+            <li>What are the total revenues, expenses, and profits across product categories and regions?</li>
+            <li>Where can cost-saving opportunities be identified?</li>
+          </ul>
+        </div>
+
+        <div class="page-nav">
+          <a href="#overview" class="nav-link">← Executive Summary</a>
+          <a href="#data-understanding" class="nav-link">Next: Data Understanding →</a>
+        </div>
+      </section>
+
+      <!-- DATA UNDERSTANDING -->
+      <section id="data-understanding" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Section 2</span>
+          <h2>Data Understanding</h2>
+        </div>
+
+        <p>The dataset used in this analysis is the Microsoft Financial Sample dataset, which contains financial sales information across multiple countries and product categories.</p>
+
+        <div class="data-table-wrapper">
+          <h3>Key Variables in Dataset</h3>
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td><strong>Segment</strong></td>
+                <td>Customer type (Government, Enterprise, SMB, etc.)</td>
+              </tr>
+              <tr>
+                <td><strong>Country</strong></td>
+                <td>Sales region and geographic markets</td>
+              </tr>
+              <tr>
+                <td><strong>Product</strong></td>
+                <td>Product categories (Paseo, VTT, Velo, Carretera, etc.)</td>
+              </tr>
+              <tr>
+                <td><strong>Discount Band</strong></td>
+                <td>Pricing tier and discount levels</td>
+              </tr>
+              <tr>
+                <td><strong>Units Sold</strong></td>
+                <td>Quantity of units per transaction</td>
+              </tr>
+              <tr>
+                <td><strong>Manufacturing Price</strong></td>
+                <td>Cost per unit to manufacture</td>
+              </tr>
+              <tr>
+                <td><strong>Sale Price</strong></td>
+                <td>Price per unit to customer</td>
+              </tr>
+              <tr>
+                <td><strong>Gross Sales</strong></td>
+                <td>Revenue before discounts and COGS</td>
+              </tr>
+              <tr>
+                <td><strong>Discounts</strong></td>
+                <td>Discount amounts applied</td>
+              </tr>
+              <tr>
+                <td><strong>Sales</strong></td>
+                <td>Net sales after discounts</td>
+              </tr>
+              <tr>
+                <td><strong>COGS</strong></td>
+                <td>Cost of Goods Sold</td>
+              </tr>
+              <tr>
+                <td><strong>Profit</strong></td>
+                <td>Sales minus COGS</td>
+              </tr>
+              <tr>
+                <td><strong>Profit Margin</strong></td>
+                <td>Calculated as Profit ÷ Sales</td>
+              </tr>
+              <tr>
+                <td><strong>Date & Year</strong></td>
+                <td>Transaction date for temporal analysis</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="page-nav">
+          <a href="#business" class="nav-link">← Business Understanding</a>
+          <a href="#preparation" class="nav-link">Next: Data Preparation →</a>
+        </div>
+      </section>
+
+      <!-- DATA PREPARATION -->
+      <section id="preparation" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Section 3</span>
+          <h2>Data Preparation</h2>
+        </div>
+
+        <p>Several data cleaning steps were performed to ensure accuracy, consistency, and readiness for analysis:</p>
+
+        <div class="checklist">
+          <div class="checklist-item">
+            <span class="checkmark">✓</span>
+            <span><strong>Duplicate Check:</strong> Verified for duplicate records — none found</span>
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✓</span>
+            <span><strong>Text Standardization:</strong> Standardized all text values using PROPER() function for consistency across categorical columns</span>
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✓</span>
+            <span><strong>Outlier Removal:</strong> Identified and removed row 11 which contained multiple missing dependent values</span>
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✓</span>
+            <span><strong>Missing Values (Categorical):</strong> Replaced missing categorical values with the mode (most frequent value) in their respective columns</span>
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✓</span>
+            <span><strong>Outlier Analysis:</strong> Used descriptive statistics to identify outliers and handled appropriately</span>
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✓</span>
+            <span><strong>Missing Values (Numerical):</strong> Replaced missing numerical values with the median where appropriate</span>
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✓</span>
+            <span><strong>Calculated Fields:</strong> Derived missing Sales values using formula: Sales = Gross Sales − Discounts</span>
+          </div>
+          <div class="checklist-item">
+            <span class="checkmark">✓</span>
+            <span><strong>New Metrics:</strong> Created Profit Margin column using formula: Profit Margin = Profit ÷ Sales</span>
+          </div>
+        </div>
+
+        <div class="highlight-box highlight-success">
+          <strong>Data Quality Result:</strong>
+          <p>Dataset is now clean, consistent, and ready for modeling with no missing critical values and all calculations validated.</p>
+        </div>
+
+        <div class="page-nav">
+          <a href="#data-understanding" class="nav-link">← Data Understanding</a>
+          <a href="#modeling" class="nav-link">Next: Data Modeling →</a>
+        </div>
+      </section>
+
+      <!-- DATA MODELING -->
+      <section id="modeling" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Section 4</span>
+          <h2>Data Modeling & Key Insights</h2>
+        </div>
+
+        <p>Pivot tables and pivot charts were created to summarize financial performance across products, regions, segments, discount levels, and time trends.</p>
+
+        <div class="insight-card">
+          <h3>📊 Product Performance Analysis</h3>
+          <p>Paseo is the clear revenue leader at approximately <strong>$33M</strong>, followed by VTT (~$24M) and Velo (~$22M). Carretera and Amarita generate significantly lower revenue, presenting either repositioning opportunities or product discontinuation options.</p>
+          <div class="example-box">
+            <strong>📌 Example Implementation:</strong> Focus 60% of marketing budget on Paseo while running a 90-day pilot program for Carretera repositioning in emerging markets. Reallocate underperforming sales resources.
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <h3>🌍 Regional Performance Analysis</h3>
+          <p>The United States dominates with ~$25M in sales, followed by Canada (~$24.3M), France (~$23.4M), and Germany (~$23.4M). Mexico generates only ~$2.9M, representing significant untapped potential or barriers to growth.</p>
+          <div class="example-box">
+            <strong>📌 Example Implementation:</strong> Launch a dedicated Mexico expansion initiative with localized pricing, partnerships with local distributors, and Spanish-language support. Benchmark against similar markets.
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <h3>👥 Customer Segment Analysis</h3>
+          <p>Government segment dominates with 63% of profits (~$10.6M), while Enterprise contributes 23%, Midmarket 7%, Channel Partners 4%, and Small Business 3%. This shows strong public sector affinity.</p>
+          <div class="example-box">
+            <strong>📌 Example Implementation:</strong> Create a dedicated Government Solutions team with compliance expertise (FISMA, FedRAMP). Develop tiered pricing for Enterprise to improve their 20% profit margin to align with Government segment performance.
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <h3>💰 Discount Impact Analysis</h3>
+          <p><strong>High-Impact Finding:</strong> Products with no discounts maintain 28.99% profit margins, while high discounts reduce margins to below 26%. Every 10% discount increase reduces profitability by 2-3 percentage points.</p>
+          <div class="example-box">
+            <strong>📌 Example Implementation:</strong> Implement a discount governance policy: Max 5% for Government, 10% for Enterprise, 15% for SMB. Use volume-based tiering instead of percentage discounts. Track all discounts in a centralized approval system.
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <h3>📅 Seasonal Trends & Monthly Patterns</h3>
+          <p>Sales exhibit strong seasonality with peaks in Q4 (Oct ~$11.2M, Dec ~$11M, Nov ~$10.1M, Sep ~$9.8M) and valleys in Q2 (Mar ~$6.8M, May ~$6.7M, Aug ~$7.1M). This pattern is consistent across 2013-2014.</p>
+          <div class="example-box">
+            <strong>📌 Example Implementation:</strong> Allocate 40% of annual marketing budget to Q4, hire seasonal sales staff in August, launch flash promotions in March/May/August, plan inventory 3 months in advance based on historical patterns.
+          </div>
+        </div>
+
+        <!-- SAMPLE DASHBOARDS -->
+        <div class="dashboard-section">
+          <h3>Sample Dashboard Visualizations</h3>
+          <p>The following dashboards illustrate key findings:</p>
+
+          <div class="dashboard-showcase">
+            <div class="dashboard-img-wrapper">
+              <h4>Sales Overview Dashboard</h4>
+              <img src="../assets/dashboards/sales-overview.png" alt="Sales Overview Dashboard showing total sales by category and profit trends" class="dashboard-screenshot">
+              <p>Displays total sales by category, profit by category, year-over-year trends, and sub-category metrics with easy filtering and drill-down capabilities.</p>
+            </div>
+
+            <div class="dashboard-img-wrapper">
+              <h4>Regional Performance Dashboard</h4>
+              <img src="../assets/dashboards/regional-performance.png" alt="Regional Performance Dashboard with state-level analysis and regional breakdowns" class="dashboard-screenshot">
+              <p>Shows state-level filtering, sales by region breakdown, quantity analysis, and state-by-state profitability metrics for geographic comparison.</p>
+            </div>
+
+            <div class="dashboard-img-wrapper">
+              <h4>Product Analysis Dashboard</h4>
+              <img src="../assets/dashboards/product-analysis.png" alt="Product Analysis Dashboard showing product categories and sub-category performance" class="dashboard-screenshot">
+              <p>Provides subcategory filters, category selection, year-over-year sales comparison, and quantity distribution by category and subcategory.</p>
+            </div>
+
+            <div class="dashboard-img-wrapper">
+              <h4>Executive Summary Dashboard</h4>
+              <img src="../assets/dashboards/executive-summary.png" alt="Executive Summary Dashboard with KPIs and comprehensive metrics" class="dashboard-screenshot">
+              <p>High-level KPIs including total sales, total profit, profit margin percentage, and YOY sales with detailed regional and category breakdowns for C-suite review.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <a href="#preparation" class="nav-link">← Data Preparation</a>
+          <a href="#evaluation" class="nav-link">Next: Evaluation →</a>
+        </div>
+      </section>
+
+      <!-- EVALUATION -->
+      <section id="evaluation" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Section 5</span>
+          <h2>Evaluation & Analysis Results</h2>
+        </div>
+
+        <div class="highlight-box highlight-info">
+          <strong>Core Findings Summary:</strong>
+          <ul>
+            <li><strong>Product Strategy:</strong> Paseo is the most profitable product and should be prioritized in future sales strategies</li>
+            <li><strong>Market Focus:</strong> United States represents the strongest market with consistent high performance</li>
+            <li><strong>Segment Opportunity:</strong> Government segment generates the highest profits and should receive strategic focus</li>
+            <li><strong>Margin Protection:</strong> Excessive discounting reduces profitability and must be carefully managed</li>
+            <li><strong>Budget Planning:</strong> Seasonal patterns are significant and should drive quarterly budget allocation decisions</li>
+          </ul>
+        </div>
+
+        <div class="subsection">
+          <h3>Analysis Validity</h3>
+          <p>The analysis used comprehensive data preparation techniques, multiple visualization methods (pivot tables, pivot charts), and cross-validation across time periods. The findings are consistent with business logic and actionable for decision-making.</p>
+        </div>
+
+        <div class="subsection">
+          <h3>Next Steps</h3>
+          <ul class="question-list">
+            <li>Implement recommendations across product portfolio and regional strategies</li>
+            <li>Monitor KPIs monthly to track progress against targets</li>
+            <li>Conduct deeper analysis on Enterprise segment pricing optimization</li>
+            <li>Develop Mexico market entry strategy</li>
+            <li>Establish discount governance controls</li>
+          </ul>
+        </div>
+
+        <div class="page-nav">
+          <a href="#modeling" class="nav-link">← Data Modeling</a>
+          <a href="#recommendations" class="nav-link">Next: Recommendations →</a>
+        </div>
+      </section>
+
+      <!-- RECOMMENDATIONS -->
+      <section id="recommendations" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Section 6</span>
+          <h2>Strategic Recommendations</h2>
+        </div>
+
+        <p>Based on comprehensive data analysis, the following recommendations are prioritized by impact and implementation feasibility:</p>
+
+        <div class="recommendation-grid">
+          <div class="recommendation-card">
+            <div class="rec-icon">📊</div>
+            <h3>Product Strategy Focus</h3>
+            <p>Concentrate marketing and distribution resources on high-performing products: Paseo (primary), VTT (secondary), and Velo (tertiary).</p>
+            <div class="rec-details">
+              <strong>Action Items:</strong>
+              <ul>
+                <li>Allocate 60% of product marketing budget to Paseo</li>
+                <li>Develop Paseo premium tier to increase average deal size</li>
+                <li>Consolidate or reposition underperforming products</li>
+              </ul>
+            </div>
+            <span class="rec-priority">High Priority</span>
+          </div>
+
+          <div class="recommendation-card">
+            <div class="rec-icon">💰</div>
+            <h3>Discount Governance</h3>
+            <p>Implement controlled discount strategies with segment-specific limits to protect profit margins.</p>
+            <div class="rec-details">
+              <strong>Action Items:</strong>
+              <ul>
+                <li>Set maximum discount limits: Gov 5%, Enterprise 10%, SMB 15%</li>
+                <li>Switch from percentage to volume-based discounts</li>
+                <li>Require VP approval for discounts exceeding limits</li>
+              </ul>
+            </div>
+            <span class="rec-priority">High Priority</span>
+          </div>
+
+          <div class="recommendation-card">
+            <div class="rec-icon">📅</div>
+            <h3>Seasonal Budget Allocation</h3>
+            <p>Allocate resources based on seasonal demand patterns with front-loading in Q4 and promotional initiatives in Q2.</p>
+            <div class="rec-details">
+              <strong>Action Items:</strong>
+              <ul>
+                <li>Allocate 40% of annual budget to Q4</li>
+                <li>Launch promotions in March, May, August</li>
+                <li>Plan inventory 3 months in advance</li>
+              </ul>
+            </div>
+            <span class="rec-priority">High Priority</span>
+          </div>
+
+          <div class="recommendation-card">
+            <div class="rec-icon">🌍</div>
+            <h3>Market Expansion</h3>
+            <p>Expand high-performing markets (US, Canada, France) and investigate growth barriers in Mexico.</p>
+            <div class="rec-details">
+              <strong>Action Items:</strong>
+              <ul>
+                <li>Increase US market share by 5% through premium positioning</li>
+                <li>Launch Mexico market entry initiative</li>
+                <li>Develop localized marketing for each region</li>
+              </ul>
+            </div>
+            <span class="rec-priority">Medium Priority</span>
+          </div>
+
+          <div class="recommendation-card">
+            <div class="rec-icon">⚙️</div>
+            <h3>Cost Optimization</h3>
+            <p>Reduce operational costs through manufacturing efficiency improvements and supply chain optimization.</p>
+            <div class="rec-details">
+              <strong>Action Items:</strong>
+              <ul>
+                <li>Target 5% COGS reduction through supply chain optimization</li>
+                <li>Implement lean manufacturing principles</li>
+                <li>Consolidate supplier base for better terms</li>
+              </ul>
+            </div>
+            <span class="rec-priority">Medium Priority</span>
+          </div>
+
+          <div class="recommendation-card">
+            <div class="rec-icon">🎯</div>
+            <h3>Segment-Specific Strategies</h3>
+            <p>Maintain Government dominance while improving Enterprise profitability through targeted approaches.</p>
+            <div class="rec-details">
+              <strong>Action Items:</strong>
+              <ul>
+                <li>Create dedicated Government Solutions team</li>
+                <li>Develop compliance expertise (FISMA, FedRAMP)</li>
+                <li>Improve Enterprise margins through pricing optimization</li>
+              </ul>
+            </div>
+            <span class="rec-priority">Medium Priority</span>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <a href="#evaluation" class="nav-link">← Evaluation</a>
+          <a href="#dashboards" class="nav-link">Next: Dashboards →</a>
+        </div>
+      </section>
+
+      <!-- DASHBOARDS -->
+      <section id="dashboards" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Section 7</span>
+          <h2>Interactive Dashboards & Tools</h2>
+        </div>
+
+        <p>Comprehensive interactive dashboards have been developed to enable stakeholders to independently explore financial performance and drive data-informed decision-making.</p>
+
+        <div class="dashboard-features">
+          <div class="feature-list">
+            <h3>Dashboard Capabilities</h3>
+            <ul>
+              <li><strong>Drill-Down Analysis:</strong> Click on any metric to explore underlying details</li>
+              <li><strong>Dynamic Filtering:</strong> Filter by product, region, segment, date range, and discount level</li>
+              <li><strong>Cross-Tab Pivoting:</strong> Quickly reorganize data by different dimensions</li>
+              <li><strong>Trend Analysis:</strong> Year-over-year and month-over-month comparisons</li>
+              <li><strong>Export Functionality:</strong> Export reports to PDF or Excel for presentations</li>
+              <li><strong>Mobile Responsive:</strong> Full functionality on desktop, tablet, and mobile devices</li>
+            </ul>
+          </div>
+
+          <div class="feature-list">
+            <h3>Access & Distribution</h3>
+            <ul>
+              <li><strong>Power BI Online:</strong> Cloud-based dashboards with automatic refresh (recommend)</li>
+              <li><strong>Excel Workbooks:</strong> Downloadable files with pivot tables and charts</li>
+              <li><strong>Scheduled Reports:</strong> Automated email delivery of key metrics</li>
+              <li><strong>Role-Based Access:</strong> Restrict sensitive data by user role</li>
+              <li><strong>User Training:</strong> 30-minute dashboard navigation training for teams</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="page-nav">
+          <a href="#recommendations" class="nav-link">← Recommendations</a>
+          <a href="#deployment" class="nav-link">Next: Deployment →</a>
+        </div>
+      </section>
+
+      <!-- DEPLOYMENT -->
+      <section id="deployment" class="report-section report-page">
+        <div class="page-header">
+          <span class="section-badge">Section 8</span>
+          <h2>Deployment & Implementation</h2>
+        </div>
+
+        <div class="highlight-box highlight-success">
+          <strong>Ready for Distribution:</strong>
+          <p>This analysis is production-ready and packaged for immediate organizational deployment. All deliverables are optimized for stakeholder consumption and decision-making.</p>
+        </div>
+
+        <div class="subsection">
+          <h3>Deployment Components</h3>
+          <ul class="question-list">
+            <li><strong>Interactive Power BI Dashboards:</strong> Four comprehensive dashboards for different user personas</li>
+            <li><strong>Excel Report Templates:</strong> Downloadable workbooks with all pivot tables and charts</li>
+            <li><strong>Executive Summary Document:</strong> One-page overview for C-suite distribution</li>
+            <li><strong>Data Dictionary:</strong> Complete documentation of all fields and calculations</li>
+            <li><strong>Training Materials:</strong> User guides and video tutorials</li>
+          </ul>
+        </div>
+
+        <div class="subsection">
+          <h3>Implementation Timeline</h3>
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td><strong>Week 1-2</strong></td>
+                <td>Launch Power BI dashboards to pilot group (Finance, Sales Leadership)</td>
+              </tr>
+              <tr>
+                <td><strong>Week 3</strong></td>
+                <td>Conduct user training sessions and gather feedback</td>
+              </tr>
+              <tr>
+                <td><strong>Week 4</strong></td>
+                <td>Deploy to full organization with role-based access</td>
+              </tr>
+              <tr>
+                <td><strong>Week 5+</strong></td>
+                <td>Weekly monitoring and optimization of adoption</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subsection">
+          <h3>Success Metrics</h3>
+          <ul class="question-list">
+            <li>Dashboard adoption rate: Target 80% of team members viewing within first month</li>
+            <li>Report generation: Reduce manual reporting by 70%</li>
+            <li>Decision velocity: Enable faster approvals through accessible data</li>
+            <li>Data accuracy: Maintain 99%+ accuracy in all metrics vs. source systems</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box highlight-success">
+          <strong>Support & Maintenance:</strong>
+          <p>Technical support available for dashboard issues. Automatic data refresh daily. Quarterly review meetings to discuss insights and optimization opportunities.</p>
+        </div>
+
+        <div class="page-nav">
+          <a href="#dashboards" class="nav-link">← Dashboards</a>
+          <a href="#toc" class="nav-link">← Back to Contents</a>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="report-footer footer-center">
+        <p>© 2026 Bridgit Etyang. Financial Data Analytics Report.</p>
+        <p><a href="../index.html">Return to Portfolio</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
