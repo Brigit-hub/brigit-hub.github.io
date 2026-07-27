@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bridgit Etyang | Data &amp; Financial Analyst</title>
-    <meta name="description" content="Portfolio of Bridgit Etyang — a data and financial analyst turning complex datasets into clear, strategic decisions." />
+    <title>Bridgit Etyang | Data & Financial Analyst</title>
+    <meta name="description" content="Portfolio of Bridgit Etyang — data and financial analyst turning complex datasets into clear, strategic decisions." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -13,176 +13,259 @@
   </head>
   <body>
 
-    <header class="sticky-top shadow-sm">
-      <nav class="navbar navbar-expand-lg container py-3">
-        <a class="navbar-brand fw-bold text-tosca" href="index.html">Bridgit Etyang</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav"
-          aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">Bridgit<span>.</span>Etyang</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="report/index.html">Report</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button class="theme-toggle" aria-label="Toggle theme">🌙</button></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
-        <div class="collapse navbar-collapse" id="siteNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-            <li class="nav-item">
-              <button class="btn btn-outline-tosca theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
 
-    <main>
-
-      <section class="container py-5 py-lg-6">
-        <div class="row align-items-center g-5">
-
-          <div class="col-lg-7 order-lg-1">
-            <div class="badge rounded-pill bg-tosca-soft text-tosca px-3 py-2 mb-4">
-              Data Analyst &nbsp;·&nbsp; Financial Analyst &nbsp;·&nbsp; Problem Solver
-            </div>
-            <h1 class="display-4 fw-bolder mb-3 lh-sm">
-              I turn financial complexity into&nbsp;<span class="text-tosca">clear business decisions.</span>
-            </h1>
-            <p class="lead text-muted mb-5">
-              I create analytical stories from messy data, build decision-ready dashboards, and bring structure to reporting so teams can act with confidence.
-            </p>
-            <div class="d-flex flex-wrap gap-3">
-              <a class="btn btn-tosca btn-lg" href="projects.html">Explore my work</a>
-              <a class="btn btn-outline-tosca btn-lg" href="mailto:brigitetyang@gmail.com">Let's connect</a>
-            </div>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="hero-greeting">Hi, my name is</div>
+          <h1>Bridgit Inyele<br/><span class="highlight">Etyang</span></h1>
+          <h2>Data Analyst &amp; Financial Analyst</h2>
+          <p>I turn complex datasets into clear insights, dependable reporting, and business-ready dashboards that support smarter decisions.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Get in Touch</a>
           </div>
+        </div>
 
-          <div class="col-lg-5 order-lg-2">
-            <div class="hero-panel p-4 rounded-4">
-              <img src="assets/profile-pic.png" alt="Bridgit Etyang" class="img-fluid rounded-4 shadow mb-4 hero-photo" />
-              <p class="small text-tosca fw-semibold text-uppercase letter-spacing mb-2">From my latest project</p>
-              <div id="heroSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2800">
-                <div class="carousel-inner rounded-3 overflow-hidden">
-                  <div class="carousel-item active">
-                    <img src="assets/dashboards/sales-overview.png" class="d-block w-100 hero-dash-img" alt="Financial dashboard screenshot 1" />
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/dashboards/regional-performance.png" class="d-block w-100 hero-dash-img" alt="Financial dashboard screenshot 2" />
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/dashboards/product-analysis.png" class="d-block w-100 hero-dash-img" alt="Financial dashboard screenshot 3" />
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/dashboards/executive-summary.png" class="d-block w-100 hero-dash-img" alt="Financial dashboard screenshot 4" />
-                  </div>
+        <div class="hero-visual">
+          <div class="reveal reveal-delay-2" style="width:100%">
+            <div class="hero-image-wrapper">
+              <div class="hero-badge">Available</div>
+              <img src="assets/profile-pic.png" alt="Bridgit Etyang" loading="lazy" />
+            </div>
+            <div class="hero-carousel-wrapper">
+              <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+                <div class="carousel-inner">
+                  <div class="carousel-item active"><img src="assets/dashboards/sales-overview.png" alt="Sales Dashboard" loading="lazy" /></div>
+                  <div class="carousel-item"><img src="assets/dashboards/regional-performance.png" alt="Regional Dashboard" loading="lazy" /></div>
+                  <div class="carousel-item"><img src="assets/dashboards/product-analysis.png" alt="Product Dashboard" loading="lazy" /></div>
+                  <div class="carousel-item"><img src="assets/dashboards/executive-summary.png" alt="Executive Dashboard" loading="lazy" /></div>
                 </div>
               </div>
-              <div class="d-flex justify-content-end mt-2">
-                <a href="projects.html" class="small text-tosca text-decoration-none fw-semibold">View full case study →</a>
-              </div>
             </div>
           </div>
-
-        </div>
-      </section>
-
-      <section class="container py-4 py-lg-5">
-        <div class="section-heading d-flex justify-content-between align-items-center mb-4">
-          <div>
-            <p class="text-tosca fw-semibold mb-1">About me</p>
-            <h2 class="h3 fw-bold mb-0">A modern analyst with finance and storytelling discipline</h2>
-          </div>
-          <a class="btn btn-link text-tosca fw-semibold text-decoration-none d-none d-md-inline" href="about.html">Read full story →</a>
-        </div>
-        <div class="row g-4">
-          <div class="col-lg-7">
-            <div class="card-surface p-4 rounded-4 h-100">
-              <p class="mb-3">
-                I am a self-motivated analyst with a strong foundation in mathematics, economics, and information technology. My work blends financial review, dashboard design, and clear communication to help organizations make smarter and faster decisions.
-              </p>
-              <p class="mb-0">
-                From preparing financial reports to building Power BI solutions, I focus on turning raw numbers into reliable insights that drive action.
-              </p>
-              <div class="mt-4 pt-3 border-top">
-                <a class="btn btn-link text-tosca fw-semibold text-decoration-none p-0 d-md-none" href="about.html">Read full story →</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-5">
-            <div class="card-surface p-4 rounded-4 h-100">
-              <h3 class="h5 fw-bold mb-3">Core competencies</h3>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-2"><span class="badge bg-tosca-soft text-tosca me-2">•</span>Financial analysis &amp; forecasting</li>
-                <li class="mb-2"><span class="badge bg-tosca-soft text-tosca me-2">•</span>Excel modelling and reporting</li>
-                <li class="mb-2"><span class="badge bg-tosca-soft text-tosca me-2">•</span>Power BI dashboard design</li>
-                <li class="mb-2"><span class="badge bg-tosca-soft text-tosca me-2">•</span>Data cleaning and reconciliation</li>
-                <li class="mb-0"><span class="badge bg-tosca-soft text-tosca me-2">•</span>Executive-ready storytelling</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="container py-4 py-lg-5">
-        <div class="section-heading mb-4">
-          <p class="text-tosca fw-semibold mb-1">Skills snapshot</p>
-          <h2 class="h3 fw-bold mb-0">A compact toolkit built for analysis and clarity</h2>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-4">
-            <div class="skill-card p-4 rounded-4 h-100">
-              <div class="skill-icon mb-3">📊</div>
-              <h3 class="h5 fw-bold mb-2">Financial Reporting</h3>
-              <p class="text-muted mb-0">Income statement support, reconciliations, accounting records, and reporting discipline across real estate and SACCO environments.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="skill-card p-4 rounded-4 h-100">
-              <div class="skill-icon mb-3">🔍</div>
-              <h3 class="h5 fw-bold mb-2">Data Analytics</h3>
-              <p class="text-muted mb-0">Cleaning, structuring, and interpreting large datasets for business-focused insight using Excel, SQL, and Python-based tooling.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <div class="skill-card p-4 rounded-4 h-100">
-              <div class="skill-icon mb-3">📈</div>
-              <h3 class="h5 fw-bold mb-2">Business Intelligence</h3>
-              <p class="text-muted mb-0">Power BI dashboards and executive-ready visual storytelling that makes trends and KPIs visible at a glance.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="container py-4 py-lg-5">
-        <div class="section-heading mb-4">
-          <p class="text-tosca fw-semibold mb-1">Featured project</p>
-          <h2 class="h3 fw-bold mb-0">Financial Data Analytics Report</h2>
-        </div>
-        <div class="report-card card-surface p-4 p-lg-5 rounded-4">
-          <div class="row align-items-center g-4">
-            <div class="col-lg-8">
-              <p class="mb-3">A comprehensive financial analysis using the CRISP-DM methodology — covering business understanding, data preparation, modeling, evaluation, and strategic recommendations across 8 detailed sections.</p>
-              <div class="d-flex flex-wrap mb-3">
-                <span class="report-stat">8 Sections</span>
-                <span class="report-stat">4 Dashboards</span>
-                <span class="report-stat">30+ Insights</span>
-                <span class="report-stat">Power BI Ready</span>
-              </div>
-            </div>
-            <div class="col-lg-4 text-lg-end">
-              <a href="report/index.html" class="btn btn-tosca btn-lg">View Complete Report →</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer class="container py-5 mt-5 border-top">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-        <p class="mb-0 text-muted">© <span id="year"></span> Bridgit Etyang. Crafted for thoughtful data storytelling.</p>
-        <div class="d-flex gap-3">
-          <a class="text-tosca text-decoration-none" href="mailto:brigitetyang@gmail.com">Email</a>
-          <a class="text-tosca text-decoration-none" href="https://www.linkedin.com/in/bridgit-etyang-754505308/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="reveal">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Quantitative thinker with a<br/>finance &amp; technology edge</h2>
+      </div>
+      <div class="about-grid" style="margin-top:40px">
+        <div class="about-text reveal reveal-delay-1">
+          <p>I am a self-motivated analyst with a strong foundation in mathematics, economics, and information technology. My work blends financial review, dashboard design, and clear communication to help organizations make smarter and faster decisions.</p>
+          <p>From preparing financial reports to building Power BI solutions, I focus on turning raw numbers into reliable insights that drive action. My experience spans real estate financial analysis, SACCO account administration, and freelance data analytics for international clients.</p>
+          <p>I bring a thoughtful, detail-driven approach to every project — whether cleaning data, preparing forecasts, or building a dashboard that makes trends visible at a glance.</p>
+          <div class="hero-actions" style="margin-top:24px">
+            <a href="about.html" class="btn btn-outline">Read Full Story →</a>
+          </div>
+        </div>
+        <div class="about-stats reveal reveal-delay-2">
+          <div class="stat-card"><div class="stat-number">5+</div><div class="stat-label">Years in Analytics &amp; Finance</div></div>
+          <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Interactive Dashboards</div></div>
+          <div class="stat-card"><div class="stat-number">700+</div><div class="stat-label">Data Rows Analyzed</div></div>
+          <div class="stat-card"><div class="stat-number">$118M</div><div class="stat-label">Revenue Analyzed</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="reveal">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">Where I've worked</h2>
+      </div>
+      <div class="experience-list" style="margin-top:40px">
+        <div class="exp-card reveal reveal-delay-1">
+          <div class="date">2025 — Present</div>
+          <h3>Data Analyst &amp; Financial Analyst</h3>
+          <div class="company">Durabuilt Real Estate · Nairobi, Kenya</div>
+          <p>Delivering analytical reporting, trend analysis, budgeting support, and dashboard-based summaries for business decisions.</p>
+        </div>
+        <div class="exp-card reveal reveal-delay-2">
+          <div class="date">2024 — 2025</div>
+          <h3>Accounts Assistant Intern</h3>
+          <div class="company">Faridi Sacco Society Ltd · Busia, Kenya</div>
+          <p>Strengthened financial recordkeeping, reconciliations, reporting, and day-to-day operational accuracy across member accounts.</p>
+        </div>
+        <div class="exp-card reveal reveal-delay-3">
+          <div class="date">2023 — 2024</div>
+          <h3>Freelance Data Analyst &amp; Researcher</h3>
+          <div class="company">Fiverr · Remote</div>
+          <p>Delivered data cleaning, research, reporting, and Power BI dashboard work for international clients across varied analytical needs.</p>
+        </div>
+        <div class="exp-card reveal reveal-delay-3">
+          <div class="date">2019</div>
+          <h3>Ledger Clerk</h3>
+          <div class="company">Lesphine Investments Ltd · Busia, Kenya</div>
+          <p>Early experience in data entry, invoice verification, and record management in a fast-paced operational environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="reveal">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">Featured work</h2>
+      </div>
+
+      <div class="projects-grid" style="margin-top:40px">
+        <div class="project-card reveal reveal-delay-1">
+          <img src="assets/dashboards/sales-overview.png" alt="Financial Performance Dashboard" class="project-image" loading="lazy" />
+          <div class="project-body">
+            <div class="project-tags"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">Data Cleaning</span></div>
+            <h3>Financial Performance Dashboard</h3>
+            <p>Comprehensive analysis of 700+ transactional data rows across 4 product categories. Built pivot-based analysis in Excel and designed a dashboard framework surfacing revenue, costs, profit, and margin insights.</p>
+            <div class="project-links">
+              <a href="projects.html">View Case Study →</a>
+              <a href="report/index.html">Full Report →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-2">
+          <img src="assets/dashboards/product-analysis.png" alt="Product Analysis Dashboard" class="project-image" loading="lazy" />
+          <div class="project-body">
+            <div class="project-tags"><span class="tag">Power BI</span><span class="tag">Data Modeling</span><span class="tag">Forecasting</span></div>
+            <h3>Product &amp; Regional Profitability Analysis</h3>
+            <p>Deep-dive into product categories and regional markets. Identified Government segment dominance at 63% profit share and Paseo as the top revenue generator at $33M.</p>
+            <div class="project-links">
+              <a href="projects.html">View Case Study →</a>
+              <a href="report/regional-dashboard.html">Regional Dashboard →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-3">
+          <img src="assets/dashboards/executive-summary.png" alt="Executive Summary Dashboard" class="project-image" loading="lazy" />
+          <div class="project-body">
+            <div class="project-tags"><span class="tag">Power BI</span><span class="tag">KPI Design</span><span class="tag">Strategy</span></div>
+            <h3>Executive Summary &amp; Strategic Recommendations</h3>
+            <p>C-suite ready dashboard with high-level KPIs, YoY growth tracking, and data-backed strategic recommendations including discount governance, market expansion, and margin optimization.</p>
+            <div class="project-links">
+              <a href="projects.html">View Case Study →</a>
+              <a href="report/executive-summary.html">Executive Report →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="reveal">
+        <div class="section-label">Skills &amp; Tools</div>
+        <h2 class="section-title">Technical toolkit</h2>
+      </div>
+      <div class="skills-grid" style="margin-top:40px">
+        <div class="skill-category reveal reveal-delay-1">
+          <h3>📊 Data Analysis</h3>
+          <div class="skill-items">
+            <span class="skill-item">Excel</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Power BI</span>
+            <span class="skill-item">Pivot Tables</span>
+            <span class="skill-item">Data Cleaning</span>
+          </div>
+        </div>
+        <div class="skill-category reveal reveal-delay-2">
+          <h3>💰 Financial</h3>
+          <div class="skill-items">
+            <span class="skill-item">Financial Modeling</span>
+            <span class="skill-item">Forecasting</span>
+            <span class="skill-item">Reconciliation</span>
+            <span class="skill-item">Budgeting</span>
+            <span class="skill-item">Reporting</span>
+          </div>
+        </div>
+        <div class="skill-category reveal reveal-delay-3">
+          <h3>📈 BI &amp; Visualization</h3>
+          <div class="skill-items">
+            <span class="skill-item">Power BI</span>
+            <span class="skill-item">Dashboard Design</span>
+            <span class="skill-item">KPI Tracking</span>
+            <span class="skill-item">Data Storytelling</span>
+          </div>
+        </div>
+        <div class="skill-category reveal reveal-delay-1">
+          <h3>🛠️ Tools</h3>
+          <div class="skill-items">
+            <span class="skill-item">Microsoft Office</span>
+            <span class="skill-item">Power BI</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Git</span>
+            <span class="skill-item">HTML/CSS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="reveal">
+        <div class="section-label">Dashboard Showcase</div>
+        <h2 class="section-title">Interactive dashboards built for clarity</h2>
+      </div>
+      <div class="dashboard-showcase-section" style="margin-top:40px" data-carousel-id="dashCarousel">
+        <div id="dashCarousel" class="carousel slide dashboard-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#dashCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#dashCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#dashCarousel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#dashCarousel" data-bs-slide-to="3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active"><img src="assets/dashboards/sales-overview.png" alt="Sales Overview Dashboard" /></div>
+            <div class="carousel-item"><img src="assets/dashboards/regional-performance.png" alt="Regional Performance Dashboard" /></div>
+            <div class="carousel-item"><img src="assets/dashboards/product-analysis.png" alt="Product Analysis Dashboard" /></div>
+            <div class="carousel-item"><img src="assets/dashboards/executive-summary.png" alt="Executive Summary Dashboard" /></div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#dashCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+          <button class="carousel-control-next" type="button" data-bs-target="#dashCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+        </div>
+        <div class="carousel-thumbs">
+          <button class="carousel-thumb active" data-bs-target="#dashCarousel" data-bs-slide-to="0"><img src="assets/dashboards/sales-overview.png" alt="Thumbnail 1" loading="lazy" /></button>
+          <button class="carousel-thumb" data-bs-target="#dashCarousel" data-bs-slide-to="1"><img src="assets/dashboards/regional-performance.png" alt="Thumbnail 2" loading="lazy" /></button>
+          <button class="carousel-thumb" data-bs-target="#dashCarousel" data-bs-slide-to="2"><img src="assets/dashboards/product-analysis.png" alt="Thumbnail 3" loading="lazy" /></button>
+          <button class="carousel-thumb" data-bs-target="#dashCarousel" data-bs-slide-to="3"><img src="assets/dashboards/executive-summary.png" alt="Thumbnail 4" loading="lazy" /></button>
+        </div>
+        <div class="dashboard-caption">Browse through the dashboards — click thumbnails to jump directly</div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="contact-section reveal">
+        <div class="section-label" style="justify-content:center">Contact</div>
+        <h2 class="section-title">Let's work together</h2>
+        <p>I'm currently open to new opportunities in data analysis, financial analysis, and business intelligence. Whether you have a project in mind or just want to connect — reach out.</p>
+        <div class="contact-grid">
+          <a href="mailto:brigitetyang@gmail.com" class="contact-card"><span class="icon">✉️</span> brigitetyang@gmail.com</a>
+          <a href="https://www.linkedin.com/in/bridgit-etyang-754505308/" target="_blank" rel="noopener noreferrer" class="contact-card"><span class="icon">🔗</span> LinkedIn</a>
+          <a href="assets/Bridgit_Etyang_Financial_Analysis.xlsx" class="contact-card" download><span class="icon">📄</span> Download Excel Analysis</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Bridgit Etyang. Designed &amp; built with purpose.</p>
+      <p style="margin-top:8px"><a href="report/index.html">Financial Analytics Report</a> · <a href="about.html">About</a> · <a href="mailto:brigitetyang@gmail.com">Email</a></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

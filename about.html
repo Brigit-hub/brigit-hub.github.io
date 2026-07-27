@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,135 +10,105 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="style.css" />
+    <style>.page { max-width: 1000px; margin: 0 auto; padding: 120px 24px 60px; }</style>
   </head>
   <body>
 
-    <header class="sticky-top shadow-sm">
-      <nav class="navbar navbar-expand-lg container py-3">
-        <a class="navbar-brand fw-bold text-tosca" href="index.html">Bridgit Etyang</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav"
-          aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav class="site-nav">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">Bridgit<span>.</span>Etyang</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#experience">Experience</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><button class="theme-toggle" aria-label="Toggle theme">🌙</button></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
-        <div class="collapse navbar-collapse" id="siteNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-            <li class="nav-item">
-              <button class="btn btn-outline-tosca theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
 
-    <main class="container py-5 py-lg-6">
+    <div class="page">
+      <div class="reveal">
+        <div class="section-label">Professional narrative</div>
+        <h1 class="section-title">Analytical, calm under pressure,<br/>and built for business clarity.</h1>
+      </div>
 
-      <section class="row g-4 align-items-start mb-5">
-        <div class="col-lg-7">
-          <p class="text-tosca fw-semibold mb-2">Professional narrative</p>
-          <h1 class="display-5 fw-bolder mb-4 lh-sm">Analytical, calm under pressure, and built for business clarity.</h1>
-          <p class="lead text-muted mb-4">
-            I am a results-oriented analyst who bridges finance, operations, and digital reporting. My experience has taught me how to balance precision with communication — turning data into a language that decision-makers can use.
-          </p>
-          <p class="mb-4">
-            My work has spanned financial reporting, account administration, and data analysis across different environments, giving me a practical understanding of how numbers shape strategy. I bring a thoughtful, detail-driven approach to every project — whether I am cleaning data, preparing forecasts, or building a dashboard that makes trends visible at a glance.
-          </p>
-          <div class="card-surface p-4 rounded-4">
-            <h2 class="h5 fw-bold mb-2 text-tosca">LinkedIn headline</h2>
-            <p class="fw-semibold mb-1">Data Analyst | Financial Analyst | Turning Data into Decisions</p>
-            <p class="text-muted mb-0 small">I translate complex datasets into clear insights, dependable reporting, and business-ready dashboards that support smarter decisions.</p>
+      <div class="about-grid" style="margin-top:48px">
+        <div class="about-text reveal reveal-delay-1">
+          <p>I am a results-oriented analyst who bridges finance, operations, and digital reporting. My experience has taught me how to balance precision with communication — turning data into a language that decision-makers can use.</p>
+          <p>My work has spanned financial reporting, account administration, and data analysis across different environments, giving me a practical understanding of how numbers shape strategy. Whether cleaning data, preparing forecasts, or building a dashboard that makes trends visible at a glance — I bring a thoughtful, detail-driven approach to every project.</p>
+
+          <div style="margin-top:28px;padding:24px;background:var(--card-bg);border:1px solid var(--border);border-radius:12px;border-left:3px solid var(--accent);">
+            <p style="font-weight:600;color:var(--text-heading);margin-bottom:8px;">Data Analyst | Financial Analyst | Turning Data into Decisions</p>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin:0;">I translate complex datasets into clear insights, dependable reporting, and business-ready dashboards that support smarter decisions.</p>
           </div>
         </div>
 
-        <div class="col-lg-5">
-          <div class="about-photo-wrap mb-4">
-            <img src="assets/profile-pic.png" alt="Bridgit Etyang" class="img-fluid rounded-4 shadow about-photo w-100" />
+        <div class="reveal reveal-delay-2">
+          <div style="border-radius:12px;overflow:hidden;border:2px solid var(--border);margin-bottom:20px;">
+            <img src="assets/profile-pic.png" alt="Bridgit Etyang" style="width:100%;display:block;" />
           </div>
-          <div class="card-surface p-4 rounded-4">
-            <h2 class="h5 fw-bold mb-3">At a glance</h2>
-            <ul class="list-unstyled mb-0">
-              <li class="mb-3 d-flex gap-3 align-items-start">
-                <span class="text-tosca fs-5 mt-1">📍</span>
-                <div><strong class="d-block">Location</strong><span class="text-muted">Nairobi, Kenya</span></div>
-              </li>
-              <li class="mb-3 d-flex gap-3 align-items-start">
-                <span class="text-tosca fs-5 mt-1">💼</span>
-                <div><strong class="d-block">Current focus</strong><span class="text-muted">Business reporting, dashboard development, and financial analysis at Durabuilt Real Estate.</span></div>
-              </li>
-              <li class="mb-3 d-flex gap-3 align-items-start">
-                <span class="text-tosca fs-5 mt-1">🎓</span>
-                <div><strong class="d-block">Education</strong><span class="text-muted">BSc Mathematics &amp; Economics with IT — Maseno University</span></div>
-              </li>
-              <li class="d-flex gap-3 align-items-start">
-                <span class="text-tosca fs-5 mt-1">📜</span>
-                <div><strong class="d-block">Certifications</strong><span class="text-muted">Excel &amp; Power BI, CPA Part I, Deloitte Data Analytics (Forage)</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-heading mb-4">
-          <p class="text-tosca fw-semibold mb-1">Career timeline</p>
-          <h2 class="h3 fw-bold mb-0">Experience, growth, and learning</h2>
-        </div>
-        <div class="timeline-list">
-          <div class="timeline-item">
-            <div class="timeline-year">2025 – Present</div>
-            <div class="timeline-content card-surface p-3 rounded-3">
-              <h3 class="h5 fw-bold mb-1">Data Analyst &amp; Financial Analyst</h3>
-              <p class="text-tosca small fw-semibold mb-2">Durabuilt Real Estate &nbsp;·&nbsp; Nairobi, Kenya</p>
-              <p class="mb-0 text-muted small">Delivering analytical reporting, trend analysis, budgeting support, and dashboard-based summaries for business decisions.</p>
+          <div class="stat-card" style="margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:12px;text-align:left;">
+              <span style="font-size:1.5rem;">📍</span>
+              <div><strong style="display:block;color:var(--text-heading);">Nairobi, Kenya</strong><span style="font-size:0.85rem;color:var(--text-muted);">Available for remote &amp; hybrid roles</span></div>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2024 – 2025</div>
-            <div class="timeline-content card-surface p-3 rounded-3">
-              <h3 class="h5 fw-bold mb-1">Accounts Assistant Intern</h3>
-              <p class="text-tosca small fw-semibold mb-2">Faridi Sacco Society Ltd &nbsp;·&nbsp; Busia, Kenya</p>
-              <p class="mb-0 text-muted small">Strengthened financial recordkeeping, reconciliations, reporting, and day-to-day operational accuracy across member accounts.</p>
-            </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="stat-card"><div style="font-weight:600;color:var(--text-heading);font-size:0.9rem;">🎓 Education</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">BSc Mathematics &amp; Economics with IT — Maseno University</div></div>
+            <div class="stat-card"><div style="font-weight:600;color:var(--text-heading);font-size:0.9rem;">📜 Certifications</div><div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">Excel &amp; Power BI, CPA Part I, Deloitte Data Analytics (Forage)</div></div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2023 – 2024</div>
-            <div class="timeline-content card-surface p-3 rounded-3">
-              <h3 class="h5 fw-bold mb-1">Freelance Data Analyst &amp; Researcher</h3>
-              <p class="text-tosca small fw-semibold mb-2">Fiverr &nbsp;·&nbsp; Remote</p>
-              <p class="mb-0 text-muted small">Delivered data cleaning, research, reporting, and Power BI dashboard work for international clients across varied analytical needs.</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2019 – 2023</div>
-            <div class="timeline-content card-surface p-3 rounded-3">
-              <h3 class="h5 fw-bold mb-1">BSc Mathematics and Economics with IT</h3>
-              <p class="text-tosca small fw-semibold mb-2">Maseno University &nbsp;·&nbsp; Kisumu, Kenya</p>
-              <p class="mb-0 text-muted small">Built a strong quantitative foundation in statistics, econometrics, financial mathematics, and evidence-based problem solving. Graduated Second Class Honours (Lower Division).</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2019</div>
-            <div class="timeline-content card-surface p-3 rounded-3">
-              <h3 class="h5 fw-bold mb-1">Ledger Clerk</h3>
-              <p class="text-tosca small fw-semibold mb-2">Lesphine Investments Ltd &nbsp;·&nbsp; Busia, Kenya</p>
-              <p class="mb-0 text-muted small">Early experience in data entry, invoice verification, and record management in a fast-paced operational environment.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer class="container py-5 mt-5 border-top">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-        <p class="mb-0 text-muted">© <span id="year"></span> Bridgit Etyang. Crafted for thoughtful data storytelling.</p>
-        <div class="d-flex gap-3">
-          <a class="text-tosca text-decoration-none" href="mailto:brigitetyang@gmail.com">Email</a>
-          <a class="text-tosca text-decoration-none" href="https://www.linkedin.com/in/bridgit-etyang-754505308/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
+
+      <section style="margin-top:80px">
+        <div class="reveal">
+          <div class="section-label">Career timeline</div>
+          <h2 class="section-title">Experience, growth, and learning</h2>
+        </div>
+        <div class="experience-list" style="margin-top:40px">
+          <div class="exp-card reveal reveal-delay-1">
+            <div class="date">2025 — Present</div>
+            <h3>Data Analyst &amp; Financial Analyst</h3>
+            <div class="company">Durabuilt Real Estate · Nairobi, Kenya</div>
+            <p>Delivering analytical reporting, trend analysis, budgeting support, and dashboard-based summaries for business decisions.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-2">
+            <div class="date">2024 — 2025</div>
+            <h3>Accounts Assistant Intern</h3>
+            <div class="company">Faridi Sacco Society Ltd · Busia, Kenya</div>
+            <p>Strengthened financial recordkeeping, reconciliations, reporting, and day-to-day operational accuracy across member accounts.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-3">
+            <div class="date">2023 — 2024</div>
+            <h3>Freelance Data Analyst &amp; Researcher</h3>
+            <div class="company">Fiverr · Remote</div>
+            <p>Delivered data cleaning, research, reporting, and Power BI dashboard work for international clients across varied analytical needs.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-3">
+            <div class="date">2019 — 2023</div>
+            <h3>BSc Mathematics and Economics with IT</h3>
+            <div class="company">Maseno University · Kisumu, Kenya</div>
+            <p>Built a strong quantitative foundation in statistics, econometrics, financial mathematics, and evidence-based problem solving.</p>
+          </div>
+          <div class="exp-card reveal reveal-delay-3">
+            <div class="date">2019</div>
+            <h3>Ledger Clerk</h3>
+            <div class="company">Lesphine Investments Ltd · Busia, Kenya</div>
+            <p>Early experience in data entry, invoice verification, and record management in a fast-paced operational environment.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>© <span id="year"></span> Bridgit Etyang. Designed &amp; built with purpose.</p>
+      <p style="margin-top:8px"><a href="index.html">Home</a> · <a href="report/index.html">Financial Report</a> · <a href="mailto:brigitetyang@gmail.com">Email</a></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
